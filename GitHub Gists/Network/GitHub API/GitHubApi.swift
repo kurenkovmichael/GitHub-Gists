@@ -28,74 +28,12 @@ class GitHubApi {
         return nil
     }
     
-    // MARK: Gists List
-    
-    private func gistsListUrl(ofUserWithName username: String,
-                                     page: Int, perPage: Int) -> String {
-        return "https://api.github.com/users/\(username)/gists?page=\(page)&per_page=\(perPage)"
-    }
-    
-    private func gistsListUrl(page: Int, perPage: Int) -> String {
-        return "https://api.github.com/gists?page=\(page)&?per_page=\(perPage)"
-    }
-    
-    public func loadGistsList(ofUserWithName username: String,
-                              page: Int, perPage: Int,
-                              completion: @escaping (RequestResult<[Gist]>) -> Void) -> DataRequest {
-        let url = gistsListUrl(ofUserWithName: username, page: page, perPage: perPage)
-        return Alamofire.request(url, headers: defaultHeaders()).response { (response) in
-            guard response.error == nil else {
-                var gistsError: GistsError?
-                if let afError = response.error as? AFError, afError.isInvalidURLError {
-                    gistsError = .userNotFound(username: username)
-                } else if response.error?.isNoConnection ?? false {
-                    gistsError = .noInternet(error: response.error)
-                } else {
-                    gistsError = .unknownError(error: response.error)
-                }
-                completion(.error(gistsError))
-                return
-            }
 
-            do {
-                let decoder = JSONDecoder()
-                decoder.dateDecodingStrategy = .iso8601
-                let loadedGists = try decoder.decode([Gist].self, from:response.data!)
-                completion(.success(loadedGists))
-            } catch {
-                completion(.error(.userNotFound(username: username)))
-            }
-        }
-    }
-    
-    // MARK: Single Gist
-    
-    private func gistUrl(with gistId: String) -> String {
-        return "https://api.github.com/gists/\(gistId)"
-    }
-    
-    public func loadGist(with gistId: String,
-                         completion: @escaping (RequestResult<Gist>) -> Void) -> DataRequest {
-        let url = gistUrl(with: gistId)
-        return Alamofire.request(url, headers: defaultHeaders()).response { (response) in
-            guard (response.error == nil) else {
-                let gistsError = self.gistsError(from: response.error)
-                completion(.error(gistsError))
-                return
-            }
-            
-            do {
-                let decoder = JSONDecoder()
-                decoder.dateDecodingStrategy = .iso8601
-                let loadedGist = try decoder.decode(Gist.self, from:response.data!)
-                completion(.success(loadedGist))
-            } catch {
-                completion(.error(.noGists))
-            }
-        }
-    }
-    
     // MARK: Login
+    
+    var authorized: Bool {
+        return keychain[keychainTokenKey] != nil
+    }
     
     private let oauth = OAuth2Swift(
         consumerKey:    Bundle.main.gitHubClientId,

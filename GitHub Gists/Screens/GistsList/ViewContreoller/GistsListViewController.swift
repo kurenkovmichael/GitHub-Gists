@@ -34,7 +34,6 @@ class GistsListViewController: UIViewController,
         }
     }
 
-
     private var frc: NSFetchedResultsController<GistEntity>!
 
     // MARK: UIViewControlle
@@ -56,6 +55,19 @@ class GistsListViewController: UIViewController,
             reloadContentAfterAppeare = false
             model.reloadGistsList()
         }
+        
+        if model.canCreateGist && navigationItem.rightBarButtonItem == nil {
+            navigationItem.rightBarButtonItem
+                = UIBarButtonItem(barButtonSystemItem: .add,
+                                  target: self,
+                                  action: #selector(createGist(_:)))
+        } else if !model.canCreateGist && navigationItem.rightBarButtonItem != nil {
+            navigationItem.rightBarButtonItem = nil
+        }
+    }
+    
+    @objc func createGist(_ item: UIBarButtonItem) {
+        router.showCreateGist()
     }
     
     // MARK: UI

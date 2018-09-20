@@ -21,6 +21,10 @@ class GistsListModel {
     
     var observer: GistsListModelObserver?
 
+    var canCreateGist: Bool {
+        return api.authorized
+    }
+    
     private var loadedPages = 0
     private let gistsOnPage = 20
     private var avtiveRequest: DataRequest?

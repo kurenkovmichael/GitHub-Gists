@@ -35,11 +35,12 @@ class ChoseGistsSourseViewController: UIViewController {
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         
         choseUserNameTextField.text = model.previousChosedUsername
+        view.isUserInteractionEnabled = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        model.logout()
+//        model.logout()
         updateChoseUsernameButtonEnabled()
     }
     
@@ -69,7 +70,7 @@ class ChoseGistsSourseViewController: UIViewController {
     }
     
     @IBAction func loginButtonPressed(_ sender: UIButton) {
-        self.view.isUserInteractionEnabled = false
+        view.isUserInteractionEnabled = false
         model.loginToGitHub(on: self) { result in
             self.view.isUserInteractionEnabled = true
             switch result {
@@ -87,9 +88,11 @@ class ChoseGistsSourseViewController: UIViewController {
         choseUserNameTitleLabel.text = NSLocalizedString("choseUsername.title", comment: "")
         choseUserNameTextField.placeholder = NSLocalizedString("choseUsername.placeholder", comment: "")
         choseUsernameButton.setTitle(NSLocalizedString("choseUsername.button", comment: ""), for: .normal)
+        choseUsernameButton.configureUI()
         
         loginTitleLabel.text = NSLocalizedString("login.title", comment: "")
         loginButton.setTitle(NSLocalizedString("login.button", comment: ""), for: .normal)
+        loginButton.configureUI()
     }
     
     func updateChoseUsernameButtonEnabled() {

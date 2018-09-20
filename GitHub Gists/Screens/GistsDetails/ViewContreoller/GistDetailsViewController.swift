@@ -65,7 +65,8 @@ class GistDetailsViewController: UIViewController,
                            forCellReuseIdentifier: fileCellIdentifier)
         
         tableView.refreshControl = UIRefreshControl()
-        tableView.refreshControl!.addTarget(self, action: #selector(handleRefresh(_:)),
+        tableView.refreshControl!.addTarget(self,
+                                            action: #selector(handleRefresh(_:)),
                                             for: UIControlEvents.valueChanged)
         
         tableView.tableFooterView = LoadMoreIndicator()

@@ -11,19 +11,22 @@
 "gist.updatedAt" = "Updated:";
 "gist.createdAt" = "Created:";
 
-"placeholder.noInternet.title" = "No internet connection";
-"placeholder.noInternet.subtitle" = "Please check your internrt connection\nand pulldown to refresh";
+"error.noInternet.title" = "No internet connection";
+"error.noInternet.subtitle" = "Please check your internrt connection\nand pulldown to refresh";
+"error.serverError.title" = "Oops an error occurred";
+"error.serverError.subtitle" = "Pulldown to refresh";
+"error.userNotFound.titleformat" = "User %@ not found";
+"error.userNotFound.subtitle" = "Please check the entered username";
+"error.noGists.title" = "User has no gists";
+"error.gistNotFound.title" = "Gist not found";
+"error.noFileContent.title" = "File is empty";
+"error.reloadButton" = "Reload";
 
-"placeholder.serverError.title" = "Oops an error occurred";
-"placeholder.serverError.subtitle" = "Pulldown to refresh";
+"createGist.descriptionPlaceholder" = "Description";
+"createGist.public" = "Public";
+"createGist.filenamePlaceholder" = "File name";
+"createGist.createButton" = "Create";
 
-"placeholder.userNotFound.titleformat" = "User %@ not found";
-"placeholder.userNotFound.subtitle" = "Please check the entered username";
+"errorAlert.cancelAction" = "Ok";
 
-"placeholder.noGists.title" = "User has no gists";
-
-"placeholder.gistNotFound.title" = "Gist not found";
-
-"placeholder.noFileContent.title" = "File is empty";
-
-"placeholder.reloadButton" = "Reload";
+"createGistScreen.title" = "Create Gist";

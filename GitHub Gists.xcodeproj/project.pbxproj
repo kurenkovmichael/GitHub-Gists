@@ -32,6 +32,14 @@
 		CFBCF58421539779007E1085 /* FileContentViewController+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBCF58321539779007E1085 /* FileContentViewController+Factory.swift */; };
 		CFBCF5862153BBB0007E1085 /* Bundle+Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBCF5852153BBB0007E1085 /* Bundle+Configuration.swift */; };
 		CFBCF5882153D0C2007E1085 /* GitHubUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBCF5872153D0C2007E1085 /* GitHubUser.swift */; };
+		CFBCF58D2153DA0C007E1085 /* CreateGistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBCF58B2153DA0C007E1085 /* CreateGistViewController.swift */; };
+		CFBCF58E2153DA0C007E1085 /* CreateGistViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFBCF58C2153DA0C007E1085 /* CreateGistViewController.xib */; };
+		CFBCF5902153DA1B007E1085 /* CreateGistModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBCF58F2153DA1B007E1085 /* CreateGistModel.swift */; };
+		CFBCF5922153DBE6007E1085 /* GitHubApi+GistsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBCF5912153DBE6007E1085 /* GitHubApi+GistsList.swift */; };
+		CFBCF5942153DBFD007E1085 /* GitHubApi+SingleGist.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBCF5932153DBFD007E1085 /* GitHubApi+SingleGist.swift */; };
+		CFBCF5982153DC25007E1085 /* GitHubApi+CreateGist.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBCF5972153DC25007E1085 /* GitHubApi+CreateGist.swift */; };
+		CFBCF59A2153E03E007E1085 /* UIButton+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBCF5992153E03E007E1085 /* UIButton+UI.swift */; };
+		CFBCF59C2153E516007E1085 /* CreateGistViewController+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBCF59B2153E516007E1085 /* CreateGistViewController+Factory.swift */; };
 		CFBD12552149678F000326E5 /* GistsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBD12532149678F000326E5 /* GistsListViewController.swift */; };
 		CFBD12562149678F000326E5 /* GistsListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFBD12542149678F000326E5 /* GistsListViewController.xib */; };
 		CFBD125B214967B7000326E5 /* GistDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBD1259214967B7000326E5 /* GistDetailsViewController.swift */; };
@@ -83,6 +91,14 @@
 		CFBCF58321539779007E1085 /* FileContentViewController+Factory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FileContentViewController+Factory.swift"; sourceTree = "<group>"; };
 		CFBCF5852153BBB0007E1085 /* Bundle+Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Configuration.swift"; sourceTree = "<group>"; };
 		CFBCF5872153D0C2007E1085 /* GitHubUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubUser.swift; sourceTree = "<group>"; };
+		CFBCF58B2153DA0C007E1085 /* CreateGistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGistViewController.swift; sourceTree = "<group>"; };
+		CFBCF58C2153DA0C007E1085 /* CreateGistViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateGistViewController.xib; sourceTree = "<group>"; };
+		CFBCF58F2153DA1B007E1085 /* CreateGistModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGistModel.swift; sourceTree = "<group>"; };
+		CFBCF5912153DBE6007E1085 /* GitHubApi+GistsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GitHubApi+GistsList.swift"; sourceTree = "<group>"; };
+		CFBCF5932153DBFD007E1085 /* GitHubApi+SingleGist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GitHubApi+SingleGist.swift"; sourceTree = "<group>"; };
+		CFBCF5972153DC25007E1085 /* GitHubApi+CreateGist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GitHubApi+CreateGist.swift"; sourceTree = "<group>"; };
+		CFBCF5992153E03E007E1085 /* UIButton+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+UI.swift"; sourceTree = "<group>"; };
+		CFBCF59B2153E516007E1085 /* CreateGistViewController+Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreateGistViewController+Factory.swift"; sourceTree = "<group>"; };
 		CFBD12532149678F000326E5 /* GistsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GistsListViewController.swift; sourceTree = "<group>"; };
 		CFBD12542149678F000326E5 /* GistsListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GistsListViewController.xib; sourceTree = "<group>"; };
 		CFBD1259214967B7000326E5 /* GistDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GistDetailsViewController.swift; sourceTree = "<group>"; };
@@ -143,6 +159,7 @@
 				CFBD12522149677C000326E5 /* GistsList */,
 				CFBD1257214967A2000326E5 /* GistsDetails */,
 				CF1B0D0D214D19E100092F73 /* FileContent */,
+				CFBCF5892153D9DC007E1085 /* CreateGist */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -202,6 +219,9 @@
 			isa = PBXGroup;
 			children = (
 				CF30F08F214CFA8C00186CBC /* GitHubApi.swift */,
+				CFBCF5912153DBE6007E1085 /* GitHubApi+GistsList.swift */,
+				CFBCF5932153DBFD007E1085 /* GitHubApi+SingleGist.swift */,
+				CFBCF5972153DC25007E1085 /* GitHubApi+CreateGist.swift */,
 			);
 			path = "GitHub API";
 			sourceTree = "<group>";
@@ -234,6 +254,7 @@
 				CFEA92B9214C3281005533AD /* LoadMoreIndicator.swift */,
 				CF4CD3E4214EE0C700900E51 /* Placeholder.swift */,
 				CF4CD3E6214EE0D700900E51 /* Placeholder.xib */,
+				CFBCF5992153E03E007E1085 /* UIButton+UI.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -321,6 +342,25 @@
 				CFBCF57B21539353007E1085 /* Swinject+Model.swift */,
 			);
 			path = DI;
+			sourceTree = "<group>";
+		};
+		CFBCF5892153D9DC007E1085 /* CreateGist */ = {
+			isa = PBXGroup;
+			children = (
+				CFBCF58A2153D9F3007E1085 /* ViewController */,
+				CFBCF58F2153DA1B007E1085 /* CreateGistModel.swift */,
+			);
+			path = CreateGist;
+			sourceTree = "<group>";
+		};
+		CFBCF58A2153D9F3007E1085 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CFBCF58B2153DA0C007E1085 /* CreateGistViewController.swift */,
+				CFBCF58C2153DA0C007E1085 /* CreateGistViewController.xib */,
+				CFBCF59B2153E516007E1085 /* CreateGistViewController+Factory.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		CFBD12522149677C000326E5 /* GistsList */ = {
@@ -485,6 +525,7 @@
 				CF48298C214D3E66008EEEF0 /* GistInfoTableViewCell.xib in Resources */,
 				CFBD12612149689E000326E5 /* ChoseGistsSourseViewController.xib in Resources */,
 				CFEA92B6214C1C3A005533AD /* GistTableViewCell.xib in Resources */,
+				CFBCF58E2153DA0C007E1085 /* CreateGistViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -556,6 +597,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFBCF5902153DA1B007E1085 /* CreateGistModel.swift in Sources */,
 				CFBD12732149A8E0000326E5 /* Gist.swift in Sources */,
 				CFEA92A1214C077C005533AD /* ChoseGistsModel.swift in Sources */,
 				CFBCF57C21539353007E1085 /* Swinject+Model.swift in Sources */,
@@ -565,13 +607,16 @@
 				CF30F090214CFA8C00186CBC /* GitHubApi.swift in Sources */,
 				CFBD12552149678F000326E5 /* GistsListViewController.swift in Sources */,
 				CFBD126E2149A502000326E5 /* GistsListModel.swift in Sources */,
+				CFBCF58D2153DA0C007E1085 /* CreateGistViewController.swift in Sources */,
 				CFEA92BA214C3281005533AD /* LoadMoreIndicator.swift in Sources */,
 				CFBCF58421539779007E1085 /* FileContentViewController+Factory.swift in Sources */,
 				CFBCF57E2153975D007E1085 /* ChoseGistsSourseViewController+Factory.swift in Sources */,
 				CFDFDA3A214D0AC10092E86F /* _GistEntity.swift in Sources */,
+				CFBCF5942153DBFD007E1085 /* GitHubApi+SingleGist.swift in Sources */,
 				CFBCF58021539767007E1085 /* GistsListViewController+Factory.swift in Sources */,
 				CFBD127A214AFA34000326E5 /* Gists.xcdatamodeld in Sources */,
 				CFEA92BC214C3738005533AD /* GistDetailsModel.swift in Sources */,
+				CFBCF59A2153E03E007E1085 /* UIButton+UI.swift in Sources */,
 				CFBD12772149AF1C000326E5 /* GistFile.swift in Sources */,
 				CFBD1288214AFF09000326E5 /* GistEntity.swift in Sources */,
 				CFA261BA2149650500C5D2B5 /* AppDelegate.swift in Sources */,
@@ -582,12 +627,15 @@
 				CFEA92A9214C15B0005533AD /* Rourer.swift in Sources */,
 				CFBD125B214967B7000326E5 /* GistDetailsViewController.swift in Sources */,
 				CF1B0D10214D1A1100092F73 /* FileContentViewController.swift in Sources */,
+				CFBCF5982153DC25007E1085 /* GitHubApi+CreateGist.swift in Sources */,
 				CFBD1285214AFF09000326E5 /* _GistFileEntity.swift in Sources */,
 				CFBCF574215385CD007E1085 /* NSError+NoConnection.swift in Sources */,
 				CFBCF57721538894007E1085 /* MagicalRecord+Gists.swift in Sources */,
 				CF48298B214D3E66008EEEF0 /* GistInfoTableViewCell.swift in Sources */,
 				CFBCF58221539770007E1085 /* GistDetailsViewController+Factory.swift in Sources */,
 				CF4CD3E5214EE0C700900E51 /* Placeholder.swift in Sources */,
+				CFBCF5922153DBE6007E1085 /* GitHubApi+GistsList.swift in Sources */,
+				CFBCF59C2153E516007E1085 /* CreateGistViewController+Factory.swift in Sources */,
 				CF4CD3EA214EE60B00900E51 /* GistsError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -28,6 +28,8 @@ extension Container {
         register(FileContentModel.self) { r, username, gistId, filename in
             FileContentModel(withUsername: username, gistId: gistId, filename: filename, api: r.resolve(GitHubApi.self)!)
         }
+        
+        register(CreateGistModel.self) { r in CreateGistModel(withApi: r.resolve(GitHubApi.self)!) }
     }
     
     // MARK: Factory
@@ -46,6 +48,10 @@ extension Container {
     
     func fileContentModel(withUserName username: String, gistId: String, filename: String) -> FileContentModel {
         return resolve(FileContentModel.self, arguments: username, gistId, filename)! as FileContentModel
+    }
+ 
+    func createGistModel() -> CreateGistModel {
+        return resolve(CreateGistModel.self)! as CreateGistModel
     }
     
 }

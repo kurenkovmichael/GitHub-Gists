@@ -132,6 +132,7 @@ class Placeholder: UIView {
         super.awakeFromNib()
         titleLabel.text = nil
         subtitleLabel.text = nil
+        actionButton.configureUI()
         hide()
     }
     
@@ -152,35 +153,8 @@ class Placeholder: UIView {
     }
     
     private func updateTexts() {
-        guard let error = self.error else {
-            self.titleLabel.text = nil
-            self.subtitleLabel.text = nil
-            return
-        }
-        
-        switch error {
-        case .noInternet(_):
-            titleLabel.text = NSLocalizedString("placeholder.noInternet.title", comment: "")
-            subtitleLabel.text = NSLocalizedString("placeholder.noInternet.subtitle", comment: "")
-            
-        case .userNotFound(let username):
-            titleLabel.text = String.init(format: NSLocalizedString("placeholder.userNotFound.titleformat", comment: ""), username)
-            subtitleLabel.text = NSLocalizedString("placeholder.userNotFound.subtitle", comment: "")
-            
-        case .noGists:
-            titleLabel.text = NSLocalizedString("placeholder.noGists.title", comment: "")
-            
-        case .gistNotFound:
-            titleLabel.text = NSLocalizedString("placeholder.gistNotFound.title", comment: "")
-            
-        case .noFileContent:
-            titleLabel.text = NSLocalizedString("placeholder.noFileContent.title", comment: "")
-            subtitleLabel.text = nil
-        
-        default:
-            titleLabel.text = NSLocalizedString("placeholder.serverError.title", comment: "")
-            subtitleLabel.text = NSLocalizedString("placeholder.serverError.subtitle", comment: "")
-        }
+        titleLabel.text = error?.localizedTitle
+        subtitleLabel.text = error?.localizedMessage
     }
 
 }

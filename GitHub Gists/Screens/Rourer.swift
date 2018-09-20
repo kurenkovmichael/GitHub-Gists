@@ -59,6 +59,22 @@ class Rourer {
         mainNavigationController!.pushViewController(vc, animated: true)
     }
     
+    func showCreateGist() {
+        let model = diContainer.createGistModel()
+        let vc = CreateGistViewController.with(model: model, router: self)
+        mainNavigationController!.pushViewController(vc, animated: true)
+    }
+    
+    func hideCurrentScreen() {
+        mainNavigationController!.popViewController(animated: true)
+    }
+    
+    func showAlert(withError error: GistsError?) {
+        let vc = UIAlertController.init(title: error?.localizedTitle, message: nil, preferredStyle: .alert)
+        vc.addAction(UIAlertAction.init(title: NSLocalizedString("errorAlert.cancelAction", comment: ""), style: .cancel, handler: nil))
+        mainNavigationController!.topViewController?.present(vc, animated: true, completion: nil)
+    }
+    
     // MARK: Private
     
     private func setupWindow(mainNavigationController: UINavigationController) {
