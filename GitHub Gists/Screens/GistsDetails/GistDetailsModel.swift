@@ -19,8 +19,8 @@ class GistDetailsModel {
     let username: String
     let gistId: String
 
-    let api = GitHubApi()
-    
+    let api: GitHubApi
+
     var observer: GistDetailsModelObserver?
 
     private var avtiveRequest: DataRequest?
@@ -28,9 +28,10 @@ class GistDetailsModel {
         return avtiveRequest != nil
     }
     
-    init(withUsername username: String, gistId: String) {
+    init(withUsername username: String, gistId: String, api: GitHubApi) {
         self.username = username
         self.gistId = gistId
+        self.api = api
     }
     
     public func obtainGistEntity() -> GistEntity? {

@@ -7,13 +7,19 @@
 //
 
 import UIKit
+import Swinject
 
 class Rourer {
     
     var window: UIWindow?
+    var diContainer: Container
 
+    init(withDiContainer diContainer: Container) {
+        self.diContainer = diContainer
+    }
+    
     func showStartScreen() {
-        let choseGistsModel = ChoseGistsModel();
+        let choseGistsModel = diContainer.choseGistsModel()
         let choseGistsVc = ChoseGistsSourseViewController.with(model: choseGistsModel, rourer: self)
         let nc = UINavigationController(rootViewController: choseGistsVc)
         nc.navigationBar.backgroundColor = UIColor.darkGray
@@ -23,9 +29,9 @@ class Rourer {
         nc.navigationBar.barStyle = .black
         
         
-        if let username = choseGistsModel.previousChosedUsername {
-            let gistsListVc = GistsListViewController.with(username: username,
-                                                           rourer: self)
+        if let filename = choseGistsModel.previousChosedUsername {
+            let model = diContainer.gistsListModel(withUserName: filename)
+            let gistsListVc = GistsListViewController.with(model: model, rourer: self)
             gistsListVc.reloadContentAfterAppeare = true
             nc.viewControllers = [choseGistsVc, gistsListVc]
         }
@@ -34,19 +40,22 @@ class Rourer {
     }
     
     func showGistsList(withUserName username: String) {
-        let vc = GistsListViewController.with(username: username, rourer: self)
+        let model = diContainer.gistsListModel(withUserName: username)
+        let vc = GistsListViewController.with(model: model, rourer: self)
         vc.reloadContentAfterAppeare = true
         mainNavigationController!.pushViewController(vc, animated: true)
     }
     
     func showGistsGistsDetails(withUserName username: String, gistId: String) {
-        let vc = GistDetailsViewController.with(username: username, gistId: gistId, rourer: self)
+        let model = diContainer.gistDetailsModel(withUserName: username, gistId: gistId)
+        let vc = GistDetailsViewController.with(model: model, rourer: self)
         vc.reloadContentAfterAppeare = true
         mainNavigationController!.pushViewController(vc, animated: true)
     }
     
     func showFileContent(withUserName username: String, gistId: String, filename: String) {
-        let vc = FileContentViewController.with(username: username, gistId: gistId, filename: filename)
+        let model = diContainer.fileContentModel(withUserName: username, gistId: gistId, filename: filename)
+        let vc = FileContentViewController.with(model: model)
         mainNavigationController!.pushViewController(vc, animated: true)
     }
     

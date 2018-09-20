@@ -10,7 +10,6 @@
 		4FB3030AAE49C9F5CBE57A63 /* Pods_GitHub_Gists.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11B3DD85526728877DFBA52B /* Pods_GitHub_Gists.framework */; };
 		CF1B0D10214D1A1100092F73 /* FileContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1B0D0E214D1A1100092F73 /* FileContentViewController.swift */; };
 		CF1B0D11214D1A1100092F73 /* FileContentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF1B0D0F214D1A1100092F73 /* FileContentViewController.xib */; };
-		CF1B0D13214D1A2600092F73 /* FileContentViewController+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1B0D12214D1A2600092F73 /* FileContentViewController+Factory.swift */; };
 		CF30F090214CFA8C00186CBC /* GitHubApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF30F08F214CFA8C00186CBC /* GitHubApi.swift */; };
 		CF48298B214D3E66008EEEF0 /* GistInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF482989214D3E66008EEEF0 /* GistInfoTableViewCell.swift */; };
 		CF48298C214D3E66008EEEF0 /* GistInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF48298A214D3E66008EEEF0 /* GistInfoTableViewCell.xib */; };
@@ -26,13 +25,17 @@
 		CFBCF574215385CD007E1085 /* NSError+NoConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBCF573215385CD007E1085 /* NSError+NoConnection.swift */; };
 		CFBCF57721538894007E1085 /* MagicalRecord+Gists.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBCF57621538894007E1085 /* MagicalRecord+Gists.swift */; };
 		CFBCF57921538A2E007E1085 /* FileContentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBCF57821538A2E007E1085 /* FileContentModel.swift */; };
+		CFBCF57C21539353007E1085 /* Swinject+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBCF57B21539353007E1085 /* Swinject+Model.swift */; };
+		CFBCF57E2153975D007E1085 /* ChoseGistsSourseViewController+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBCF57D2153975D007E1085 /* ChoseGistsSourseViewController+Factory.swift */; };
+		CFBCF58021539767007E1085 /* GistsListViewController+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBCF57F21539767007E1085 /* GistsListViewController+Factory.swift */; };
+		CFBCF58221539770007E1085 /* GistDetailsViewController+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBCF58121539770007E1085 /* GistDetailsViewController+Factory.swift */; };
+		CFBCF58421539779007E1085 /* FileContentViewController+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBCF58321539779007E1085 /* FileContentViewController+Factory.swift */; };
 		CFBD12552149678F000326E5 /* GistsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBD12532149678F000326E5 /* GistsListViewController.swift */; };
 		CFBD12562149678F000326E5 /* GistsListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFBD12542149678F000326E5 /* GistsListViewController.xib */; };
 		CFBD125B214967B7000326E5 /* GistDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBD1259214967B7000326E5 /* GistDetailsViewController.swift */; };
 		CFBD12602149689E000326E5 /* ChoseGistsSourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBD125E2149689E000326E5 /* ChoseGistsSourseViewController.swift */; };
 		CFBD12612149689E000326E5 /* ChoseGistsSourseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFBD125F2149689E000326E5 /* ChoseGistsSourseViewController.xib */; };
 		CFBD126321496B86000326E5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CFBD126221496B86000326E5 /* Localizable.strings */; };
-		CFBD126A21499EA3000326E5 /* GistsListViewController+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBD126921499EA3000326E5 /* GistsListViewController+Factory.swift */; };
 		CFBD126E2149A502000326E5 /* GistsListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBD126D2149A502000326E5 /* GistsListModel.swift */; };
 		CFBD12732149A8E0000326E5 /* Gist.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBD12722149A8E0000326E5 /* Gist.swift */; };
 		CFBD12772149AF1C000326E5 /* GistFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBD12762149AF1C000326E5 /* GistFile.swift */; };
@@ -43,8 +46,6 @@
 		CFDFDA3A214D0AC10092E86F /* _GistEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDFDA39214D0AC10092E86F /* _GistEntity.swift */; };
 		CFEA92A1214C077C005533AD /* ChoseGistsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEA92A0214C077C005533AD /* ChoseGistsModel.swift */; };
 		CFEA92A9214C15B0005533AD /* Rourer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEA92A8214C15B0005533AD /* Rourer.swift */; };
-		CFEA92AB214C1747005533AD /* ChoseGistsSourseViewController+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEA92AA214C1747005533AD /* ChoseGistsSourseViewController+Factory.swift */; };
-		CFEA92AD214C19B1005533AD /* GistDetailsViewController+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEA92AC214C19B1005533AD /* GistDetailsViewController+Factory.swift */; };
 		CFEA92B5214C1C3A005533AD /* GistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEA92B3214C1C3A005533AD /* GistTableViewCell.swift */; };
 		CFEA92B6214C1C3A005533AD /* GistTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFEA92B4214C1C3A005533AD /* GistTableViewCell.xib */; };
 		CFEA92BA214C3281005533AD /* LoadMoreIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEA92B9214C3281005533AD /* LoadMoreIndicator.swift */; };
@@ -56,7 +57,6 @@
 		AA7569861D2DB7CC7F8B6E2E /* Pods-GitHub Gists.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHub Gists.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GitHub Gists/Pods-GitHub Gists.debug.xcconfig"; sourceTree = "<group>"; };
 		CF1B0D0E214D1A1100092F73 /* FileContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileContentViewController.swift; sourceTree = "<group>"; };
 		CF1B0D0F214D1A1100092F73 /* FileContentViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FileContentViewController.xib; sourceTree = "<group>"; };
-		CF1B0D12214D1A2600092F73 /* FileContentViewController+Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileContentViewController+Factory.swift"; sourceTree = "<group>"; };
 		CF30F08F214CFA8C00186CBC /* GitHubApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubApi.swift; sourceTree = "<group>"; };
 		CF482989214D3E66008EEEF0 /* GistInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GistInfoTableViewCell.swift; sourceTree = "<group>"; };
 		CF48298A214D3E66008EEEF0 /* GistInfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GistInfoTableViewCell.xib; sourceTree = "<group>"; };
@@ -74,13 +74,17 @@
 		CFBCF573215385CD007E1085 /* NSError+NoConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSError+NoConnection.swift"; sourceTree = "<group>"; };
 		CFBCF57621538894007E1085 /* MagicalRecord+Gists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MagicalRecord+Gists.swift"; sourceTree = "<group>"; };
 		CFBCF57821538A2E007E1085 /* FileContentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileContentModel.swift; sourceTree = "<group>"; };
+		CFBCF57B21539353007E1085 /* Swinject+Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Swinject+Model.swift"; sourceTree = "<group>"; };
+		CFBCF57D2153975D007E1085 /* ChoseGistsSourseViewController+Factory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ChoseGistsSourseViewController+Factory.swift"; sourceTree = "<group>"; };
+		CFBCF57F21539767007E1085 /* GistsListViewController+Factory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GistsListViewController+Factory.swift"; sourceTree = "<group>"; };
+		CFBCF58121539770007E1085 /* GistDetailsViewController+Factory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GistDetailsViewController+Factory.swift"; sourceTree = "<group>"; };
+		CFBCF58321539779007E1085 /* FileContentViewController+Factory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FileContentViewController+Factory.swift"; sourceTree = "<group>"; };
 		CFBD12532149678F000326E5 /* GistsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GistsListViewController.swift; sourceTree = "<group>"; };
 		CFBD12542149678F000326E5 /* GistsListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GistsListViewController.xib; sourceTree = "<group>"; };
 		CFBD1259214967B7000326E5 /* GistDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GistDetailsViewController.swift; sourceTree = "<group>"; };
 		CFBD125E2149689E000326E5 /* ChoseGistsSourseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoseGistsSourseViewController.swift; sourceTree = "<group>"; };
 		CFBD125F2149689E000326E5 /* ChoseGistsSourseViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChoseGistsSourseViewController.xib; sourceTree = "<group>"; };
 		CFBD126221496B86000326E5 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
-		CFBD126921499EA3000326E5 /* GistsListViewController+Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GistsListViewController+Factory.swift"; sourceTree = "<group>"; };
 		CFBD126D2149A502000326E5 /* GistsListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GistsListModel.swift; sourceTree = "<group>"; };
 		CFBD12722149A8E0000326E5 /* Gist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gist.swift; sourceTree = "<group>"; };
 		CFBD12762149AF1C000326E5 /* GistFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GistFile.swift; sourceTree = "<group>"; };
@@ -91,8 +95,6 @@
 		CFDFDA39214D0AC10092E86F /* _GistEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _GistEntity.swift; sourceTree = "<group>"; };
 		CFEA92A0214C077C005533AD /* ChoseGistsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoseGistsModel.swift; sourceTree = "<group>"; };
 		CFEA92A8214C15B0005533AD /* Rourer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rourer.swift; sourceTree = "<group>"; };
-		CFEA92AA214C1747005533AD /* ChoseGistsSourseViewController+Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChoseGistsSourseViewController+Factory.swift"; sourceTree = "<group>"; };
-		CFEA92AC214C19B1005533AD /* GistDetailsViewController+Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GistDetailsViewController+Factory.swift"; sourceTree = "<group>"; };
 		CFEA92B3214C1C3A005533AD /* GistTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GistTableViewCell.swift; sourceTree = "<group>"; };
 		CFEA92B4214C1C3A005533AD /* GistTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GistTableViewCell.xib; sourceTree = "<group>"; };
 		CFEA92B9214C3281005533AD /* LoadMoreIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadMoreIndicator.swift; sourceTree = "<group>"; };
@@ -146,7 +148,7 @@
 			children = (
 				CFBD125E2149689E000326E5 /* ChoseGistsSourseViewController.swift */,
 				CFBD125F2149689E000326E5 /* ChoseGistsSourseViewController.xib */,
-				CFEA92AA214C1747005533AD /* ChoseGistsSourseViewController+Factory.swift */,
+				CFBCF57D2153975D007E1085 /* ChoseGistsSourseViewController+Factory.swift */,
 			);
 			path = ViewContreoller;
 			sourceTree = "<group>";
@@ -157,7 +159,7 @@
 				CFEA92B0214C1B85005533AD /* Views */,
 				CFBD12532149678F000326E5 /* GistsListViewController.swift */,
 				CFBD12542149678F000326E5 /* GistsListViewController.xib */,
-				CFBD126921499EA3000326E5 /* GistsListViewController+Factory.swift */,
+				CFBCF57F21539767007E1085 /* GistsListViewController+Factory.swift */,
 			);
 			path = ViewContreoller;
 			sourceTree = "<group>";
@@ -168,7 +170,7 @@
 				CF482986214D3DA5008EEEF0 /* Views */,
 				CFBD1259214967B7000326E5 /* GistDetailsViewController.swift */,
 				CF482992214D3FD9008EEEF0 /* GistDetailsViewController.xib */,
-				CFEA92AC214C19B1005533AD /* GistDetailsViewController+Factory.swift */,
+				CFBCF58121539770007E1085 /* GistDetailsViewController+Factory.swift */,
 			);
 			path = ViewContreoller;
 			sourceTree = "<group>";
@@ -214,6 +216,7 @@
 		CF4CD3E3214EE04000900E51 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				CFBCF57A21539327007E1085 /* DI */,
 				CFBCF572215385B3007E1085 /* Error */,
 				CF4CD3E8214EE5EA00900E51 /* Views */,
 			);
@@ -285,7 +288,7 @@
 			children = (
 				CF1B0D0E214D1A1100092F73 /* FileContentViewController.swift */,
 				CF1B0D0F214D1A1100092F73 /* FileContentViewController.xib */,
-				CF1B0D12214D1A2600092F73 /* FileContentViewController+Factory.swift */,
+				CFBCF58321539779007E1085 /* FileContentViewController+Factory.swift */,
 			);
 			path = ViewContreoller;
 			sourceTree = "<group>";
@@ -305,6 +308,14 @@
 				CFBCF57621538894007E1085 /* MagicalRecord+Gists.swift */,
 			);
 			path = MagicalRecord;
+			sourceTree = "<group>";
+		};
+		CFBCF57A21539327007E1085 /* DI */ = {
+			isa = PBXGroup;
+			children = (
+				CFBCF57B21539353007E1085 /* Swinject+Model.swift */,
+			);
+			path = DI;
 			sourceTree = "<group>";
 		};
 		CFBD12522149677C000326E5 /* GistsList */ = {
@@ -483,11 +494,13 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-GitHub Gists/Pods-GitHub Gists-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/MagicalRecord/MagicalRecord.framework",
+				"${BUILT_PRODUCTS_DIR}/Swinject/Swinject.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MagicalRecord.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Swinject.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -535,32 +548,33 @@
 			files = (
 				CFBD12732149A8E0000326E5 /* Gist.swift in Sources */,
 				CFEA92A1214C077C005533AD /* ChoseGistsModel.swift in Sources */,
+				CFBCF57C21539353007E1085 /* Swinject+Model.swift in Sources */,
 				CFEA92B5214C1C3A005533AD /* GistTableViewCell.swift in Sources */,
 				CFBD12602149689E000326E5 /* ChoseGistsSourseViewController.swift in Sources */,
 				CF48298F214D3E74008EEEF0 /* GistFileTableViewCell.swift in Sources */,
 				CF30F090214CFA8C00186CBC /* GitHubApi.swift in Sources */,
 				CFBD12552149678F000326E5 /* GistsListViewController.swift in Sources */,
-				CFEA92AD214C19B1005533AD /* GistDetailsViewController+Factory.swift in Sources */,
 				CFBD126E2149A502000326E5 /* GistsListModel.swift in Sources */,
 				CFEA92BA214C3281005533AD /* LoadMoreIndicator.swift in Sources */,
+				CFBCF58421539779007E1085 /* FileContentViewController+Factory.swift in Sources */,
+				CFBCF57E2153975D007E1085 /* ChoseGistsSourseViewController+Factory.swift in Sources */,
 				CFDFDA3A214D0AC10092E86F /* _GistEntity.swift in Sources */,
+				CFBCF58021539767007E1085 /* GistsListViewController+Factory.swift in Sources */,
 				CFBD127A214AFA34000326E5 /* Gists.xcdatamodeld in Sources */,
 				CFEA92BC214C3738005533AD /* GistDetailsModel.swift in Sources */,
 				CFBD12772149AF1C000326E5 /* GistFile.swift in Sources */,
-				CFEA92AB214C1747005533AD /* ChoseGistsSourseViewController+Factory.swift in Sources */,
 				CFBD1288214AFF09000326E5 /* GistEntity.swift in Sources */,
 				CFA261BA2149650500C5D2B5 /* AppDelegate.swift in Sources */,
 				CFBCF57921538A2E007E1085 /* FileContentModel.swift in Sources */,
 				CFBD128A214AFF09000326E5 /* GistFileEntity.swift in Sources */,
 				CFEA92A9214C15B0005533AD /* Rourer.swift in Sources */,
 				CFBD125B214967B7000326E5 /* GistDetailsViewController.swift in Sources */,
-				CFBD126A21499EA3000326E5 /* GistsListViewController+Factory.swift in Sources */,
 				CF1B0D10214D1A1100092F73 /* FileContentViewController.swift in Sources */,
 				CFBD1285214AFF09000326E5 /* _GistFileEntity.swift in Sources */,
-				CF1B0D13214D1A2600092F73 /* FileContentViewController+Factory.swift in Sources */,
 				CFBCF574215385CD007E1085 /* NSError+NoConnection.swift in Sources */,
 				CFBCF57721538894007E1085 /* MagicalRecord+Gists.swift in Sources */,
 				CF48298B214D3E66008EEEF0 /* GistInfoTableViewCell.swift in Sources */,
+				CFBCF58221539770007E1085 /* GistDetailsViewController+Factory.swift in Sources */,
 				CF4CD3E5214EE0C700900E51 /* Placeholder.swift in Sources */,
 				CF4CD3EA214EE60B00900E51 /* GistsError.swift in Sources */,
 			);

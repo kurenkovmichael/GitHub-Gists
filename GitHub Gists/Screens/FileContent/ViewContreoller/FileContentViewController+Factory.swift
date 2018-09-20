@@ -10,9 +10,9 @@ import UIKit
 
 extension FileContentViewController {
 
-    static func with(username: String, gistId: String, filename: String) -> FileContentViewController {
+    static func with(model: FileContentModel) -> FileContentViewController {
         let vc = FileContentViewController.init(nibName: "FileContentViewController", bundle: nil)
-        vc.model = FileContentModel(withUsername: username, gistId: gistId, filename: filename)
+        vc.model = model
         return vc;
     }
     

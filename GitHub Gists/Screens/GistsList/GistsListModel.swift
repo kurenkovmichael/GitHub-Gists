@@ -17,7 +17,7 @@ protocol GistsListModelObserver {
 class GistsListModel {
     
     let username: String
-    let api = GitHubApi()
+    let api: GitHubApi
     
     var observer: GistsListModelObserver?
 
@@ -28,8 +28,9 @@ class GistsListModel {
         return avtiveRequest != nil
     }
     
-    init(withUsername username: String) {
+    init(withUsername username: String, api: GitHubApi) {
         self.username = username
+        self.api = api
     }
     
     func reloadGistsList() {

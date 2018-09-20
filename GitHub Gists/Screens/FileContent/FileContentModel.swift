@@ -20,8 +20,8 @@ class FileContentModel {
     let gistId: String
     let filename: String
     
-    let api = GitHubApi()
-    
+    let api: GitHubApi
+
     var observer: FileContentModelObserver?
     
     private var avtiveRequest: DataRequest?
@@ -29,10 +29,11 @@ class FileContentModel {
         return avtiveRequest != nil
     }
     
-    init(withUsername username:String, gistId: String, filename: String) {
+    init(withUsername username:String, gistId: String, filename: String, api: GitHubApi) {
         self.username = username
         self.gistId = gistId
         self.filename = filename
+        self.api = api
     }
     
     public func obtainFileEntity() -> GistFileEntity? {

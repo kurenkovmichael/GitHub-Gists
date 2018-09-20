@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BA54D661A919F4F7790B239467D1019C"
-               BuildableName = "Pods_GitHub_Gists.framework"
-               BlueprintName = "Pods-GitHub Gists"
+               BlueprintIdentifier = "DFA951CCC1E3A8EB3C5D5790A5D57DC7"
+               BuildableName = "Swinject.framework"
+               BlueprintName = "Swinject"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "BA54D661A919F4F7790B239467D1019C"
-            BuildableName = "Pods_GitHub_Gists.framework"
-            BlueprintName = "Pods-GitHub Gists"
+            BlueprintIdentifier = "DFA951CCC1E3A8EB3C5D5790A5D57DC7"
+            BuildableName = "Swinject.framework"
+            BlueprintName = "Swinject"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

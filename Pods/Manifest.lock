@@ -1,20 +1,24 @@
 PODS:
   - Alamofire (4.7.3)
   - MagicalRecord/Shorthand (2.2)
+  - Swinject (2.4.1)
 
 DEPENDENCIES:
   - Alamofire (= 4.7.3)
   - MagicalRecord/Shorthand (= 2.2)
+  - Swinject
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
     - MagicalRecord
+    - Swinject
 
 SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
   MagicalRecord: 2dc87179ae7c1f2a274442624ec65a07d4357a6f
+  Swinject: f7f15a9672e99328c1f07f277091087917215700
 
-PODFILE CHECKSUM: 6ed470f4b977e214ddd627c91b619700f6957e2e
+PODFILE CHECKSUM: 1b60af7d2be551a0ed40c9ad2d1a2355567d7de7
 
 COCOAPODS: 1.5.3

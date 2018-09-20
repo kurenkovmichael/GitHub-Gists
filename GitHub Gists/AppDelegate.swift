@@ -8,16 +8,20 @@
 
 import UIKit
 import MagicalRecord
+import Swinject
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-    let rourer = Rourer()
-
+    
+    let container = Container()
+    var rourer: Rourer!
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         MagicalRecord.setupCoreDataStack()
-                
+        container.setup()
+        
+        rourer = Rourer(withDiContainer: container)
         rourer.showStartScreen()
         
         return true
