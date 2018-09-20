@@ -1,0 +1,26 @@
+"choseUsername.title" = "Enter name of GitHub user\nto watch his Gists";
+"choseUsername.placeholder" = "GitHub username";
+"choseUsername.button" = "Show Gists";
+
+"gistInfo.title" = "Files";
+"gistHistory.title" = "History";
+
+"gist.updatedAt" = "Updated:";
+"gist.createdAt" = "Created:";
+
+"placeholder.noInternet.title" = "No internet connection";
+"placeholder.noInternet.subtitle" = "Please check your internrt connection\nand pulldown to refresh";
+
+"placeholder.serverError.title" = "Oops an error occurred";
+"placeholder.serverError.subtitle" = "Pulldown to refresh";
+
+"placeholder.userNotFound.titleformat" = "User %@ not found";
+"placeholder.userNotFound.subtitle" = "Please check the entered username";
+
+"placeholder.noGists.title" = "User has no gists";
+
+"placeholder.gistNotFound.title" = "Gist not found";
+
+"placeholder.noFileContent.title" = "File is empty";
+
+"placeholder.reloadButton" = "Reload";

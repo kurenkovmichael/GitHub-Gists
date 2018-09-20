@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14135" systemVersion="17G65" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="GistEntity" representedClassName="GistEntity" syncable="YES">
+        <attribute name="comments" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="commentsUrl" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="commitsUrl" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="forksUrl" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="gistsDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="gitPullUrl" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="gitPushUrl" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="htmlUrl" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" attributeType="String" syncable="YES"/>
+        <attribute name="isPublic" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="nodeId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="order" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="updatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="username" attributeType="String" syncable="YES"/>
+        <relationship name="files" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="GistFileEntity" inverseName="gist" inverseEntity="GistFileEntity" syncable="YES"/>
+    </entity>
+    <entity name="GistFileEntity" representedClassName="GistFileEntity" syncable="YES">
+        <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="filename" attributeType="String" syncable="YES"/>
+        <attribute name="language" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="order" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="rawUrl" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="size" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="gist" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GistEntity" inverseName="files" inverseEntity="GistEntity" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="GistEntity" positionX="160" positionY="192" width="128" height="300"/>
+        <element name="GistFileEntity" positionX="160" positionY="192" width="128" height="165"/>
+    </elements>
+</model>

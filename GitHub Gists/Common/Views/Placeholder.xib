@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="Placeholder" customModule="GitHub_Gists" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="300" height="226"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="wAJ-py-m1T">
+                    <rect key="frame" x="16" y="0.0" width="268" height="226"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="252" horizontalCompressionResistancePriority="250" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="me6-TX-OXD">
+                            <rect key="frame" x="108" y="0.0" width="52.5" height="26.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BHM-8y-axy">
+                            <rect key="frame" x="116.5" y="84" width="35" height="17"/>
+                            <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <view contentMode="scaleToFill" verticalHuggingPriority="252" translatesAutoresizingMaskIntoConstraints="NO" id="iSU-CR-fQL">
+                            <rect key="frame" x="14" y="158" width="240" height="68"/>
+                            <subviews>
+                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="hKP-fh-fgH">
+                                    <rect key="frame" x="110" y="40" width="20" height="20"/>
+                                </activityIndicatorView>
+                                <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P25-L3-Im9">
+                                    <rect key="frame" x="67" y="28" width="106" height="44"/>
+                                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="44" id="Ifg-3K-lhK"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <inset key="contentEdgeInsets" minX="24" minY="0.0" maxX="24" maxY="0.0"/>
+                                    <state key="normal" title="Button">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <state key="disabled">
+                                        <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <state key="selected">
+                                        <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="22"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="actionButtonPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="Evs-C9-aKU"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="P25-L3-Im9" firstAttribute="centerY" secondItem="iSU-CR-fQL" secondAttribute="centerY" constant="16" id="0Le-xA-Ig5"/>
+                                <constraint firstItem="P25-L3-Im9" firstAttribute="centerX" secondItem="iSU-CR-fQL" secondAttribute="centerX" id="NAw-Vw-gkb"/>
+                                <constraint firstAttribute="height" constant="68" id="Thi-ZK-lgk"/>
+                                <constraint firstItem="hKP-fh-fgH" firstAttribute="centerY" secondItem="iSU-CR-fQL" secondAttribute="centerY" constant="16" id="bbH-gs-o0V"/>
+                                <constraint firstItem="hKP-fh-fgH" firstAttribute="centerX" secondItem="iSU-CR-fQL" secondAttribute="centerX" id="kG6-Tr-4yg"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="wAJ-py-m1T" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="5WI-u8-Ybb"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="wAJ-py-m1T" secondAttribute="bottom" id="9R0-cz-7bQ"/>
+                <constraint firstItem="wAJ-py-m1T" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="PSX-vY-wXd"/>
+                <constraint firstAttribute="trailing" secondItem="wAJ-py-m1T" secondAttribute="trailing" constant="16" id="Q1m-Ld-Bz4"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="actionButton" destination="P25-L3-Im9" id="bmY-Su-4Ln"/>
+                <outlet property="actionsContainer" destination="iSU-CR-fQL" id="X9G-KS-P3D"/>
+                <outlet property="activityIndicator" destination="hKP-fh-fgH" id="Ap6-XX-a24"/>
+                <outlet property="subtitleLabel" destination="BHM-8y-axy" id="dAu-HR-CAh"/>
+                <outlet property="titleLabel" destination="me6-TX-OXD" id="cXL-fb-t7D"/>
+            </connections>
+            <point key="canvasLocation" x="34" y="85"/>
+        </view>
+    </objects>
+</document>
