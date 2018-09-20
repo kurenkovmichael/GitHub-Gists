@@ -61,7 +61,9 @@ class GitHubApi {
     }
     
     func logout() {
-        keychain[keychainTokenKey] = nil
+        do {
+            try keychain.remove(keychainTokenKey)
+        } catch { }
     }
     
     private func loginAsOauth(on viewController: UIViewController, completion: @escaping (RequestResult<String>)->Void) {

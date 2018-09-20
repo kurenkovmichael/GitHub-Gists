@@ -12,7 +12,8 @@ class ChoseGistsSourseViewController: UIViewController {
     
     var model: ChoseGistsModel!
     var rourer: Rourer!
-    
+    var keepAuthorization: Bool = false
+
     @IBOutlet weak var choseUserNameTitleLabel: UILabel!
     @IBOutlet weak var choseUserNameTextField: UITextField!
     @IBOutlet weak var choseUsernameButton: UIButton!
@@ -22,6 +23,9 @@ class ChoseGistsSourseViewController: UIViewController {
     
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var activityIndicatorContainer: UIView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+
     // MARK: UIViewControlle
     
     override func viewDidLoad() {
@@ -35,12 +39,14 @@ class ChoseGistsSourseViewController: UIViewController {
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         
         choseUserNameTextField.text = model.previousChosedUsername
-        view.isUserInteractionEnabled = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-//        model.logout()
+        if !keepAuthorization && !loginInProgress {
+            model.logout()
+        }
+        keepAuthorization = false
         updateChoseUsernameButtonEnabled()
     }
     
@@ -68,11 +74,18 @@ class ChoseGistsSourseViewController: UIViewController {
         model.choseUsername(username)
         rourer.showGistsList(withUserName: username)
     }
-    
+
+    var loginInProgress = false
     @IBAction func loginButtonPressed(_ sender: UIButton) {
-        view.isUserInteractionEnabled = false
+        activityIndicatorContainer.isHidden = false
+        activityIndicator.startAnimating()
+        loginInProgress = true
+        
         model.loginToGitHub(on: self) { result in
-            self.view.isUserInteractionEnabled = true
+            self.activityIndicatorContainer.isHidden = true
+            self.activityIndicator.stopAnimating()
+            self.loginInProgress = false
+            
             switch result {
             case .success(let username):
                 self.rourer.showGistsList(withUserName: username)

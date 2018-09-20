@@ -12,6 +12,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChoseGistsSourseViewController" customModule="GitHub_Gists" customModuleProvider="target">
             <connections>
+                <outlet property="activityIndicator" destination="lbm-YR-BRP" id="w6w-55-Rjm"/>
+                <outlet property="activityIndicatorContainer" destination="DNu-ql-mSw" id="fG3-IM-NI3"/>
                 <outlet property="bottomConstraint" destination="Q2s-nA-0QN" id="ZyL-vL-D8j"/>
                 <outlet property="choseUserNameTextField" destination="zRZ-e1-Vwp" id="0zo-BJ-x4P"/>
                 <outlet property="choseUserNameTitleLabel" destination="FQy-fh-eqK" id="Ii0-rS-0Ir"/>
@@ -149,15 +151,32 @@
                         <constraint firstItem="DnM-rI-yB0" firstAttribute="height" secondItem="sGz-PJ-iFf" secondAttribute="height" priority="50" id="saM-NN-90J"/>
                     </constraints>
                 </scrollView>
+                <view hidden="YES" alpha="0.55000001192092896" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DNu-ql-mSw">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <subviews>
+                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="lbm-YR-BRP">
+                            <rect key="frame" x="169.5" y="315.5" width="37" height="37"/>
+                        </activityIndicatorView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="lbm-YR-BRP" firstAttribute="centerX" secondItem="DNu-ql-mSw" secondAttribute="centerX" id="8gN-tO-Opu"/>
+                        <constraint firstItem="lbm-YR-BRP" firstAttribute="centerY" secondItem="DNu-ql-mSw" secondAttribute="centerY" id="Gh8-Go-II8"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="sGz-PJ-iFf" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="5Ai-Pn-n4x"/>
+                <constraint firstItem="DNu-ql-mSw" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="72w-nc-9Bg"/>
+                <constraint firstItem="DNu-ql-mSw" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Btz-uX-ijI"/>
                 <constraint firstItem="sGz-PJ-iFf" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Gau-IO-QyM"/>
                 <constraint firstAttribute="bottom" secondItem="sGz-PJ-iFf" secondAttribute="bottom" id="Q2s-nA-0QN"/>
+                <constraint firstItem="DNu-ql-mSw" firstAttribute="bottom" secondItem="i5M-Pr-FkT" secondAttribute="bottom" id="YbU-iu-s7N"/>
+                <constraint firstItem="DNu-ql-mSw" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="bHI-K7-CZP"/>
                 <constraint firstItem="sGz-PJ-iFf" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="kdt-8h-fBK"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <viewLayoutGuide key="safeArea" id="ceC-RL-tCu"/>
             <point key="canvasLocation" x="34.5" y="53.5"/>
         </view>
     </objects>

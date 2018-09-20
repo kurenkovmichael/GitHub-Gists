@@ -18,6 +18,7 @@ class CreateGistViewController: UIViewController,
     @IBOutlet weak var fileNameTextField: UITextField!
 
     @IBOutlet weak var createButton: UIButton!
+    
     @IBOutlet weak var activityIndicatorContainer: UIView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 

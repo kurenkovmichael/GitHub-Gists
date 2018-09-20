@@ -29,8 +29,10 @@ class Rourer {
         nc.navigationBar.barStyle = .black
         
         
-        if let filename = choseGistsModel.previousChosedUsername {
-            let model = diContainer.gistsListModel(withUserName: filename)
+        if let username = choseGistsModel.previousChosedUsername {
+            choseGistsVc.keepAuthorization = true
+
+            let model = diContainer.gistsListModel(withUserName: username)
             let gistsListVc = GistsListViewController.with(model: model, rourer: self)
             gistsListVc.reloadContentAfterAppeare = true
             nc.viewControllers = [choseGistsVc, gistsListVc]
