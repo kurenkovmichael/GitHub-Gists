@@ -9,6 +9,7 @@
 import UIKit
 import MagicalRecord
 import Swinject
+import OAuthSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -24,6 +25,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         rourer = Rourer(withDiContainer: container)
         rourer.showStartScreen()
         
+        return true
+    }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        if (url.scheme == "githubgists" &&  url.host == "github-login") {
+            OAuthSwift.handle(url: url)
+        }
         return true
     }
     

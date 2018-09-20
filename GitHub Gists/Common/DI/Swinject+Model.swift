@@ -14,19 +14,19 @@ extension Container {
         register(GitHubApi.self) { _ in GitHubApi() }
             .inObjectScope(.container)
         
-        register(ChoseGistsModel.self) { _ in ChoseGistsModel() }
+        register(ChoseGistsModel.self) { r in ChoseGistsModel(api: r.resolve(GitHubApi.self)!) }
             .inObjectScope(.container)
         
         register(GistsListModel.self) { r, username in
-            GistsListModel.init(withUsername: username, api: r.resolve(GitHubApi.self)!)
+            GistsListModel(withUsername: username, api: r.resolve(GitHubApi.self)!)
         }
         
         register(GistDetailsModel.self) { r, username, gistId in
-            GistDetailsModel.init(withUsername: username, gistId: gistId, api: r.resolve(GitHubApi.self)!)
+            GistDetailsModel(withUsername: username, gistId: gistId, api: r.resolve(GitHubApi.self)!)
         }
         
         register(FileContentModel.self) { r, username, gistId, filename in
-            FileContentModel.init(withUsername: username, gistId: gistId, filename: filename, api: r.resolve(GitHubApi.self)!)
+            FileContentModel(withUsername: username, gistId: gistId, filename: filename, api: r.resolve(GitHubApi.self)!)
         }
     }
     

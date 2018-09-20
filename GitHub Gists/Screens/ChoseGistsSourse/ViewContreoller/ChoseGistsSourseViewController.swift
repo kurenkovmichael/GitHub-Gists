@@ -17,7 +17,10 @@ class ChoseGistsSourseViewController: UIViewController {
     @IBOutlet weak var choseUserNameTextField: UITextField!
     @IBOutlet weak var choseUsernameButton: UIButton!
     
-    @IBOutlet weak var contentCenterConstraint: NSLayoutConstraint!
+    @IBOutlet weak var loginTitleLabel: UILabel!
+    @IBOutlet weak var loginButton: UIButton!
+    
+    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     
     // MARK: UIViewControlle
     
@@ -36,7 +39,7 @@ class ChoseGistsSourseViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        choseUserNameTextField.becomeFirstResponder()
+        model.logout()
         updateChoseUsernameButtonEnabled()
     }
     
@@ -65,14 +68,28 @@ class ChoseGistsSourseViewController: UIViewController {
         rourer.showGistsList(withUserName: username)
     }
     
+    @IBAction func loginButtonPressed(_ sender: UIButton) {
+        self.view.isUserInteractionEnabled = false
+        model.loginToGitHub(on: self) { result in
+            self.view.isUserInteractionEnabled = true
+            switch result {
+            case .success(let username):
+                self.rourer.showGistsList(withUserName: username)
+            default:
+                break
+            }
+        }
+    }
+    
     // MARK: UI
     
     func configureUI() {
         choseUserNameTitleLabel.text = NSLocalizedString("choseUsername.title", comment: "")
-        
         choseUserNameTextField.placeholder = NSLocalizedString("choseUsername.placeholder", comment: "")
+        choseUsernameButton.setTitle(NSLocalizedString("choseUsername.button", comment: ""), for: .normal)
         
-        choseUsernameButton.setTitle(NSLocalizedString("choseUsername.button", comment: ""), for: .normal);
+        loginTitleLabel.text = NSLocalizedString("login.title", comment: "")
+        loginButton.setTitle(NSLocalizedString("login.button", comment: ""), for: .normal)
     }
     
     func updateChoseUsernameButtonEnabled() {
@@ -83,7 +100,7 @@ class ChoseGistsSourseViewController: UIViewController {
     
     func updateContentPosition(forKeyboardFrame keyboardFrame: CGRect, duration: TimeInterval) {
         let buttomOffset = view.bounds.height - keyboardFrame.minY
-        contentCenterConstraint.constant = buttomOffset / 2
+        bottomConstraint.constant = buttomOffset
         
         UIView.animate(withDuration: duration) {
             self.view.layoutIfNeeded()

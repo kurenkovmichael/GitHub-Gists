@@ -1,24 +1,32 @@
 PODS:
   - Alamofire (4.7.3)
+  - KeychainAccess (3.1.1)
   - MagicalRecord/Shorthand (2.2)
+  - OAuthSwift (1.2.2)
   - Swinject (2.4.1)
 
 DEPENDENCIES:
   - Alamofire (= 4.7.3)
+  - KeychainAccess
   - MagicalRecord/Shorthand (= 2.2)
-  - Swinject
+  - OAuthSwift (= 1.2.2)
+  - Swinject (= 2.4.1)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
+    - KeychainAccess
     - MagicalRecord
+    - OAuthSwift
     - Swinject
 
 SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
+  KeychainAccess: 7bd430028059754a3debab3cfc0bd1fc7fb85df3
   MagicalRecord: 2dc87179ae7c1f2a274442624ec65a07d4357a6f
+  OAuthSwift: 27b34fe80b76b67cd8f45571e0be2432bc9f6de1
   Swinject: f7f15a9672e99328c1f07f277091087917215700
 
-PODFILE CHECKSUM: 1b60af7d2be551a0ed40c9ad2d1a2355567d7de7
+PODFILE CHECKSUM: aac982f3c3e13e79eba56469fabb849683cf0496
 
 COCOAPODS: 1.5.3

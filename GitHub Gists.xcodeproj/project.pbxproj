@@ -30,6 +30,8 @@
 		CFBCF58021539767007E1085 /* GistsListViewController+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBCF57F21539767007E1085 /* GistsListViewController+Factory.swift */; };
 		CFBCF58221539770007E1085 /* GistDetailsViewController+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBCF58121539770007E1085 /* GistDetailsViewController+Factory.swift */; };
 		CFBCF58421539779007E1085 /* FileContentViewController+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBCF58321539779007E1085 /* FileContentViewController+Factory.swift */; };
+		CFBCF5862153BBB0007E1085 /* Bundle+Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBCF5852153BBB0007E1085 /* Bundle+Configuration.swift */; };
+		CFBCF5882153D0C2007E1085 /* GitHubUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBCF5872153D0C2007E1085 /* GitHubUser.swift */; };
 		CFBD12552149678F000326E5 /* GistsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBD12532149678F000326E5 /* GistsListViewController.swift */; };
 		CFBD12562149678F000326E5 /* GistsListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFBD12542149678F000326E5 /* GistsListViewController.xib */; };
 		CFBD125B214967B7000326E5 /* GistDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBD1259214967B7000326E5 /* GistDetailsViewController.swift */; };
@@ -79,6 +81,8 @@
 		CFBCF57F21539767007E1085 /* GistsListViewController+Factory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GistsListViewController+Factory.swift"; sourceTree = "<group>"; };
 		CFBCF58121539770007E1085 /* GistDetailsViewController+Factory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GistDetailsViewController+Factory.swift"; sourceTree = "<group>"; };
 		CFBCF58321539779007E1085 /* FileContentViewController+Factory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FileContentViewController+Factory.swift"; sourceTree = "<group>"; };
+		CFBCF5852153BBB0007E1085 /* Bundle+Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Configuration.swift"; sourceTree = "<group>"; };
+		CFBCF5872153D0C2007E1085 /* GitHubUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubUser.swift; sourceTree = "<group>"; };
 		CFBD12532149678F000326E5 /* GistsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GistsListViewController.swift; sourceTree = "<group>"; };
 		CFBD12542149678F000326E5 /* GistsListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GistsListViewController.xib; sourceTree = "<group>"; };
 		CFBD1259214967B7000326E5 /* GistDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GistDetailsViewController.swift; sourceTree = "<group>"; };
@@ -219,6 +223,7 @@
 				CFBCF57A21539327007E1085 /* DI */,
 				CFBCF572215385B3007E1085 /* Error */,
 				CF4CD3E8214EE5EA00900E51 /* Views */,
+				CFBCF5852153BBB0007E1085 /* Bundle+Configuration.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -350,6 +355,7 @@
 			children = (
 				CFBD12722149A8E0000326E5 /* Gist.swift */,
 				CFBD12762149AF1C000326E5 /* GistFile.swift */,
+				CFBCF5872153D0C2007E1085 /* GitHubUser.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -493,13 +499,17 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-GitHub Gists/Pods-GitHub Gists-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
 				"${BUILT_PRODUCTS_DIR}/MagicalRecord/MagicalRecord.framework",
+				"${BUILT_PRODUCTS_DIR}/OAuthSwift/OAuthSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Swinject/Swinject.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MagicalRecord.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OAuthSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Swinject.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -567,6 +577,8 @@
 				CFA261BA2149650500C5D2B5 /* AppDelegate.swift in Sources */,
 				CFBCF57921538A2E007E1085 /* FileContentModel.swift in Sources */,
 				CFBD128A214AFF09000326E5 /* GistFileEntity.swift in Sources */,
+				CFBCF5882153D0C2007E1085 /* GitHubUser.swift in Sources */,
+				CFBCF5862153BBB0007E1085 /* Bundle+Configuration.swift in Sources */,
 				CFEA92A9214C15B0005533AD /* Rourer.swift in Sources */,
 				CFBD125B214967B7000326E5 /* GistDetailsViewController.swift in Sources */,
 				CF1B0D10214D1A1100092F73 /* FileContentViewController.swift in Sources */,
@@ -715,6 +727,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H3GKMDNHRZ;
+				GitHub_Client_ID = c8e782b60be7b21a640c;
+				GitHub_Client_Secret = c702b7ee80532fb34565abd46767c9fc301a8f01;
 				INFOPLIST_FILE = "GitHub Gists/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -734,6 +748,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H3GKMDNHRZ;
+				GitHub_Client_ID = c8e782b60be7b21a640c;
+				GitHub_Client_Secret = c702b7ee80532fb34565abd46767c9fc301a8f01;
 				INFOPLIST_FILE = "GitHub Gists/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
