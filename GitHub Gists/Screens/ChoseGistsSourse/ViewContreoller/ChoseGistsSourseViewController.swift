@@ -12,16 +12,16 @@ class ChoseGistsSourseViewController: UIViewController {
     
     var model: ChoseGistsModel!
     var rourer: Rourer!
-    var keepAuthorization: Bool = false
 
     @IBOutlet weak var choseUserNameTitleLabel: UILabel!
     @IBOutlet weak var choseUserNameTextField: UITextField!
     @IBOutlet weak var choseUsernameButton: UIButton!
     
-    @IBOutlet weak var loginTitleLabel: UILabel!
+    @IBOutlet weak var loginTitleFerstLabel: UILabel!
+    @IBOutlet weak var loginTitleSecondLabel: UILabel!
     @IBOutlet weak var loginButton: UIButton!
     
-    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var contentCenterConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var activityIndicatorContainer: UIView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -43,10 +43,9 @@ class ChoseGistsSourseViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if !keepAuthorization && !loginInProgress {
+        if !loginInProgress {
             model.logout()
         }
-        keepAuthorization = false
         updateChoseUsernameButtonEnabled()
     }
     
@@ -71,6 +70,7 @@ class ChoseGistsSourseViewController: UIViewController {
             return;
         }
         
+        model.logout()
         model.choseUsername(username)
         rourer.showGistsList(withUserName: username)
     }
@@ -103,7 +103,8 @@ class ChoseGistsSourseViewController: UIViewController {
         choseUsernameButton.setTitle(NSLocalizedString("choseUsername.button", comment: ""), for: .normal)
         choseUsernameButton.configureUI()
         
-        loginTitleLabel.text = NSLocalizedString("login.title", comment: "")
+        loginTitleFerstLabel.text = NSLocalizedString("login.titleFirst", comment: "")
+        loginTitleSecondLabel.text = NSLocalizedString("login.titleSecond", comment: "")
         loginButton.setTitle(NSLocalizedString("login.button", comment: ""), for: .normal)
         loginButton.configureUI()
     }
@@ -116,7 +117,7 @@ class ChoseGistsSourseViewController: UIViewController {
     
     func updateContentPosition(forKeyboardFrame keyboardFrame: CGRect, duration: TimeInterval) {
         let buttomOffset = view.bounds.height - keyboardFrame.minY
-        bottomConstraint.constant = buttomOffset
+        contentCenterConstraint.constant = buttomOffset / 2
         
         UIView.animate(withDuration: duration) {
             self.view.layoutIfNeeded()

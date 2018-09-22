@@ -30,8 +30,6 @@ class Rourer {
         
         
         if let username = choseGistsModel.previousChosedUsername {
-            choseGistsVc.keepAuthorization = true
-
             let model = diContainer.gistsListModel(withUserName: username)
             let gistsListVc = GistsListViewController.with(model: model, rourer: self)
             gistsListVc.reloadContentAfterAppeare = true

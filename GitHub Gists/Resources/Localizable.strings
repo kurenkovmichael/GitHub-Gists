@@ -2,8 +2,9 @@
 "choseUsername.placeholder" = "GitHub username";
 "choseUsername.button" = "Show Gists";
 
-"login.title" = "Or login in to GitHub";
+"login.titleFirst" = "Or";
 "login.button" = "Login";
+"login.titleSecond" = "in to GitHub";
 
 "gistInfo.title" = "Files";
 "gistHistory.title" = "History";

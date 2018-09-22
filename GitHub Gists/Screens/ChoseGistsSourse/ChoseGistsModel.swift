@@ -52,7 +52,6 @@ class ChoseGistsModel {
     }
     
     func logout() {
-        cleanChosedUsername()
         api.logout()
     }
     
