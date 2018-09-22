@@ -10,6 +10,7 @@ import Foundation
 import Alamofire
 import OAuthSwift
 import KeychainAccess
+import SafariServices
 
 class GitHubApi {
  
@@ -27,23 +28,12 @@ class GitHubApi {
         }
         return nil
     }
-    
 
     // MARK: Login
     
     var authorized: Bool {
         return keychain[keychainTokenKey] != nil
     }
-    
-    private let oauth = OAuth2Swift(
-        consumerKey:    Bundle.main.gitHubClientId,
-        consumerSecret: Bundle.main.gitHubClientSecret,
-        authorizeUrl:   "https://github.com/login/oauth/authorize",
-        accessTokenUrl: "https://github.com/login/oauth/access_token",
-        responseType:   "code"
-    )
-    
-    private var oauthRequestHandle: OAuthSwiftRequestHandle?
     
     func login(on viewController: UIViewController, completion: @escaping (RequestResult<String>)->Void)  {
         if keychain[keychainTokenKey] != nil {
@@ -66,24 +56,35 @@ class GitHubApi {
         } catch { }
     }
     
+    private var oauthRequest: OAuthRequest?
+    
     private func loginAsOauth(on viewController: UIViewController, completion: @escaping (RequestResult<String>)->Void) {
-        if let oldHandle = oauthRequestHandle {
-            oldHandle.cancel()
+        if let oldRequest = oauthRequest {
+            oldRequest.cancel()
         }
         
-        oauth.authorizeURLHandler = SafariURLHandler(viewController: viewController, oauthSwift: oauth)
-        oauthRequestHandle =
-            oauth.authorize(withCallbackURL: URL(string: "githubgists://github-login")!,
-                            scope: "gist", state:NSUUID().uuidString,
-                            success: { credential, response, parameters in
-                                self.oauthRequestHandle = nil
-                                self.keychain[self.keychainTokenKey] = credential.oauthToken
-                                self.loadUser(completion: completion)
-            },
-                            failure: { error in
-                                self.oauthRequestHandle = nil
-                                completion(.error(.unknownError(error: error)))
-            })
+        oauthRequest = OAuthRequest.init(clientId: Bundle.main.gitHubClientId,
+                                         clientSecret: Bundle.main.gitHubClientSecret,
+                                         authorizeUrl: "https://github.com/login/oauth/authorize",
+                                         accessTokenUrl: "https://github.com/login/oauth/access_token",
+                                         responseType: "code",
+                                         on: viewController)
+        { result in
+            self.oauthRequest = nil
+            
+            switch result {
+            case .success(let oauthToken, let oauthRefreshToken, _):
+                self.keychain[self.keychainTokenKey] = oauthToken
+                self.loadUser(completion: completion)
+                
+            case .error(let error):
+                completion(.error(.unknownError(error: error)))
+                
+            default:
+                completion(.error(.unknownError(error: nil)))
+            }
+        }
+        oauthRequest?.login()
     }
     
     private func userUrl() -> String {

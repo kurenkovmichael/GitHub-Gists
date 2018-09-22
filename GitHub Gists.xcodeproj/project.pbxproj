@@ -40,6 +40,7 @@
 		CFBCF5982153DC25007E1085 /* GitHubApi+CreateGist.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBCF5972153DC25007E1085 /* GitHubApi+CreateGist.swift */; };
 		CFBCF59A2153E03E007E1085 /* UIButton+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBCF5992153E03E007E1085 /* UIButton+UI.swift */; };
 		CFBCF59C2153E516007E1085 /* CreateGistViewController+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBCF59B2153E516007E1085 /* CreateGistViewController+Factory.swift */; };
+		CFBCF59F215676CD007E1085 /* OAuthRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBCF59E215676CD007E1085 /* OAuthRequest.swift */; };
 		CFBD12552149678F000326E5 /* GistsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBD12532149678F000326E5 /* GistsListViewController.swift */; };
 		CFBD12562149678F000326E5 /* GistsListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFBD12542149678F000326E5 /* GistsListViewController.xib */; };
 		CFBD125B214967B7000326E5 /* GistDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBD1259214967B7000326E5 /* GistDetailsViewController.swift */; };
@@ -99,6 +100,7 @@
 		CFBCF5972153DC25007E1085 /* GitHubApi+CreateGist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GitHubApi+CreateGist.swift"; sourceTree = "<group>"; };
 		CFBCF5992153E03E007E1085 /* UIButton+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+UI.swift"; sourceTree = "<group>"; };
 		CFBCF59B2153E516007E1085 /* CreateGistViewController+Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreateGistViewController+Factory.swift"; sourceTree = "<group>"; };
+		CFBCF59E215676CD007E1085 /* OAuthRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthRequest.swift; sourceTree = "<group>"; };
 		CFBD12532149678F000326E5 /* GistsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GistsListViewController.swift; sourceTree = "<group>"; };
 		CFBD12542149678F000326E5 /* GistsListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GistsListViewController.xib; sourceTree = "<group>"; };
 		CFBD1259214967B7000326E5 /* GistDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GistDetailsViewController.swift; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 		CF30F08C214CF98C00186CBC /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				CFBCF59D215676AC007E1085 /* OAuth */,
 				CF30F08E214CFA4900186CBC /* GitHub API */,
 				CFBD126F2149A891000326E5 /* Data */,
 			);
@@ -361,6 +364,14 @@
 				CFBCF59B2153E516007E1085 /* CreateGistViewController+Factory.swift */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		CFBCF59D215676AC007E1085 /* OAuth */ = {
+			isa = PBXGroup;
+			children = (
+				CFBCF59E215676CD007E1085 /* OAuthRequest.swift */,
+			);
+			path = OAuth;
 			sourceTree = "<group>";
 		};
 		CFBD12522149677C000326E5 /* GistsList */ = {
@@ -605,6 +616,7 @@
 				CFBD12602149689E000326E5 /* ChoseGistsSourseViewController.swift in Sources */,
 				CF48298F214D3E74008EEEF0 /* GistFileTableViewCell.swift in Sources */,
 				CF30F090214CFA8C00186CBC /* GitHubApi.swift in Sources */,
+				CFBCF59F215676CD007E1085 /* OAuthRequest.swift in Sources */,
 				CFBD12552149678F000326E5 /* GistsListViewController.swift in Sources */,
 				CFBD126E2149A502000326E5 /* GistsListModel.swift in Sources */,
 				CFBCF58D2153DA0C007E1085 /* CreateGistViewController.swift in Sources */,
@@ -705,7 +717,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -759,7 +771,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -773,8 +785,9 @@
 			baseConfigurationReference = AA7569861D2DB7CC7F8B6E2E /* Pods-GitHub Gists.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = H3GKMDNHRZ;
 				GitHub_Client_ID = c8e782b60be7b21a640c;
 				GitHub_Client_Secret = c702b7ee80532fb34565abd46767c9fc301a8f01;
 				INFOPLIST_FILE = "GitHub Gists/Supporting Files/Info.plist";
@@ -795,8 +808,9 @@
 			baseConfigurationReference = EA477CC5F6129993B613A0F0 /* Pods-GitHub Gists.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = H3GKMDNHRZ;
 				GitHub_Client_ID = c8e782b60be7b21a640c;
 				GitHub_Client_Secret = c702b7ee80532fb34565abd46767c9fc301a8f01;
 				INFOPLIST_FILE = "GitHub Gists/Supporting Files/Info.plist";
