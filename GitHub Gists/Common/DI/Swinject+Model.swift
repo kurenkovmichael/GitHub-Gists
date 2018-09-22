@@ -10,8 +10,12 @@ import Swinject
 
 extension Container {
     
-    func setup() {
-        register(GitHubApi.self) { _ in GitHubApi() }
+    func setup(withOAuthVCProvider oauthVCProvider: OAuthViewControllerProvider) {
+        register(GitHubApi.self) { _ in
+            let api = GitHubApi()
+            api.oauthViewControllerProvider = oauthVCProvider
+            return api
+            }
             .inObjectScope(.container)
         
         register(ChoseGistsModel.self) { r in ChoseGistsModel(api: r.resolve(GitHubApi.self)!) }

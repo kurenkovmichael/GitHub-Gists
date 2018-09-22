@@ -24,6 +24,11 @@ extension GitHubApi {
                                  encoding: JSONEncoding.default,
                                  headers: defaultHeaders())
             .response { (response) in
+                if response.response?.statusCode == 401 {
+                    completion(.error(.unauthorized))
+                    return
+                }
+                
                 guard (response.error == nil) else {
                     let gistsError = self.gistsError(from: response.error)
                     completion(.error(gistsError))

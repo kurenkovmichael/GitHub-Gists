@@ -12,10 +12,14 @@ import OAuthSwift
 import KeychainAccess
 import SafariServices
 
+protocol OAuthViewControllerProvider {
+    func viewController() -> UIViewController?
+}
+
 class OAuthRequest: NSObject, SFSafariViewControllerDelegate {
     
     enum OAuthResult {
-        case success(oauthToken: String, oauthRefreshToken: String, oauthTokenExpiresAt: Date?)
+        case success(token: String)
         case canceled
         case error(Error?)
     }
@@ -25,7 +29,7 @@ class OAuthRequest: NSObject, SFSafariViewControllerDelegate {
          authorizeUrl: String,
          accessTokenUrl: String,
          responseType: String,
-         on viewController: UIViewController?,
+         on vcProvider: OAuthViewControllerProvider?,
          completion: @escaping (OAuthResult)->Void) {
         
         self.oauth = OAuth2Swift(consumerKey: clientId,
@@ -33,15 +37,12 @@ class OAuthRequest: NSObject, SFSafariViewControllerDelegate {
                             authorizeUrl: authorizeUrl,
                             accessTokenUrl: accessTokenUrl,
                             responseType:  responseType )
-        
-        if let vc = viewController {
-            self.oauth.authorizeURLHandler = SafariURLHandler(viewController: vc, oauthSwift: oauth)
-        }
-        
+        self.vcProvider = vcProvider
         self.completion = completion
     }
     
     private var oauth: OAuth2Swift
+    private var vcProvider: OAuthViewControllerProvider?
     private var completion: ((OAuthResult)->Void)?
     
     private var oauthRequestHandle: OAuthSwiftRequestHandle?
@@ -51,26 +52,27 @@ class OAuthRequest: NSObject, SFSafariViewControllerDelegate {
             oldHandle.cancel()
         }
         
-        if let safariURLHandler = oauth.authorizeURLHandler as? SafariURLHandler {
+        if let vc = vcProvider?.viewController() {
+            let safariURLHandler = SafariURLHandler(viewController: vc, oauthSwift: oauth)
             safariURLHandler.delegate = self
+            oauth.authorizeURLHandler = safariURLHandler
         }
         
         oauthRequestHandle =
             oauth.authorize(withCallbackURL: URL(string: "githubgists://github-login")!,
-                            scope: "gist", state:NSUUID().uuidString,
-                            success: { credential, response, parameters in
-                                self.oauthRequestHandle = nil
-                                if let completion = self.completion {
-                                    completion(.success(oauthToken: credential.oauthToken,
-                                                        oauthRefreshToken: credential.oauthRefreshToken,
-                                                        oauthTokenExpiresAt: credential.oauthTokenExpiresAt))
-                                }
+                            scope: "gist", state:NSUUID().uuidString, success:
+                { credential, response, parameters in
+                    self.oauthRequestHandle = nil
+                    if let completion = self.completion {
+                        completion(.success(token: credential.oauthToken))
+                    }
             },
-                            failure: { error in
-                                self.oauthRequestHandle = nil
-                                if let completion = self.completion {
-                                    completion(.error(error))
-                                }
+                            failure:
+                { error in
+                    self.oauthRequestHandle = nil
+                    if let completion = self.completion {
+                        completion(.error(error))
+                    }
             })
     }
     

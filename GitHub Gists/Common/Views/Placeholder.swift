@@ -154,7 +154,7 @@ class Placeholder: UIView {
     
     private func updateTexts() {
         titleLabel.text = error?.localizedTitle
-        subtitleLabel.text = error?.localizedMessage
+        subtitleLabel.text = error?.localizedSubtitle
     }
 
 }

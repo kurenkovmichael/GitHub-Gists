@@ -71,6 +71,12 @@ class CreateGistViewController: UIViewController,
         
         if successful {
             router.hideCurrentScreen()
+        } else if error?.isUnauthorized ?? false {
+            
+            // TODO: Need to implement a session restore.
+            router.showAlert(withError: error) {
+                self.router.showStartScreen()
+            }
         } else {
             router.showAlert(withError: .unknownError(error: nil))
         }

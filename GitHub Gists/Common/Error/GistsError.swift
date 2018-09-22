@@ -11,10 +11,20 @@ import Foundation
 enum GistsError: Error {
     case unknownError(error: Error?)
     case noInternet(error: Error?)
+    case unauthorized
     case userNotFound(username: String)
     case noGists
     case gistNotFound
     case noFileContent
+    
+    var isUnauthorized: Bool {
+        switch self {
+        case .unauthorized:
+            return true
+        default:
+            return false
+        }
+    }
     
     var localizedTitle: String? {
         switch self {
@@ -33,12 +43,15 @@ enum GistsError: Error {
         case .noFileContent:
             return NSLocalizedString("error.noFileContent.title", comment: "")
             
+        case .unauthorized:
+            return NSLocalizedString("error.unauthorized.title", comment: "")
+            
         default:
             return NSLocalizedString("error.serverError.title", comment: "")
         }
     }
     
-    var localizedMessage: String? {
+    var localizedSubtitle: String? {
         switch self {
         case .noInternet(_):
             return NSLocalizedString("error.noInternet.subtitle", comment: "")
@@ -46,11 +59,25 @@ enum GistsError: Error {
         case .userNotFound:
             return NSLocalizedString("error.userNotFound.subtitle", comment: "")
             
-        case .noGists, .gistNotFound, .noFileContent:
+        case .noGists, .gistNotFound, .noFileContent, .unauthorized:
             return nil
             
         default:
-            return NSLocalizedString("error.serverError.subtitle", comment: "")
+            return NSLocalizedString("error.default.subtitle", comment: "")
         }
     }
+    
+    var localizedMessage: String? {
+        switch self {
+        case .noInternet(_):
+            return NSLocalizedString("error.noInternet.message", comment: "")
+        
+        case .unauthorized:
+            return NSLocalizedString("error.unauthorized.message", comment: "")
+            
+        default:
+            return nil
+        }
+    }
+    
 }

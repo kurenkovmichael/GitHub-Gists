@@ -9,7 +9,7 @@
 import UIKit
 import Swinject
 
-class Rourer {
+class Rourer: OAuthViewControllerProvider {
     
     var window: UIWindow?
     var diContainer: Container
@@ -19,6 +19,11 @@ class Rourer {
     }
     
     func showStartScreen() {
+        if let startScreenVC = mainNavigationController?.viewControllers.first {
+            mainNavigationController!.popToViewController(startScreenVC, animated: true)
+            return
+        }
+        
         let choseGistsModel = diContainer.choseGistsModel()
         let choseGistsVc = ChoseGistsSourseViewController.with(model: choseGistsModel, rourer: self)
         let nc = UINavigationController(rootViewController: choseGistsVc)
@@ -27,7 +32,6 @@ class Rourer {
         nc.navigationBar.isTranslucent = true
         nc.navigationBar.tintColor = UIColor.white
         nc.navigationBar.barStyle = .black
-        
         
         if let username = choseGistsModel.previousChosedUsername {
             let model = diContainer.gistsListModel(withUserName: username)
@@ -69,9 +73,14 @@ class Rourer {
         mainNavigationController!.popViewController(animated: true)
     }
     
-    func showAlert(withError error: GistsError?) {
-        let vc = UIAlertController.init(title: error?.localizedTitle, message: nil, preferredStyle: .alert)
-        vc.addAction(UIAlertAction.init(title: NSLocalizedString("errorAlert.cancelAction", comment: ""), style: .cancel, handler: nil))
+    func showAlert(withError error: GistsError?, completion: (()->Void)? = nil) {
+        let vc = UIAlertController(title: error?.localizedTitle,
+                                   message: error?.localizedMessage,
+                                   preferredStyle: .alert)
+        
+        let handler = completion != nil ? { (action: UIAlertAction) in completion!() } : nil
+        vc.addAction(UIAlertAction(title: NSLocalizedString("errorAlert.cancelAction", comment: ""), style: .cancel, handler: handler))
+        
         mainNavigationController!.topViewController?.present(vc, animated: true, completion: nil)
     }
     
@@ -86,4 +95,11 @@ class Rourer {
     private var mainNavigationController: UINavigationController? {
         return window?.rootViewController as? UINavigationController
     }
+    
+    // MARK: OAuthViewControllerProvider
+    
+    func viewController() -> UIViewController? {
+        return mainNavigationController?.topViewController
+    }
+    
 }

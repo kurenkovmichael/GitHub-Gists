@@ -19,6 +19,8 @@ class GitHubApi {
         case error(GistsError?)
     }
     
+    var oauthViewControllerProvider: OAuthViewControllerProvider?
+
     let keychain = Keychain(service: "ru.mikhailkurenkov.example.github-api")
     let keychainTokenKey = "github-token"
     
@@ -63,18 +65,18 @@ class GitHubApi {
             oldRequest.cancel()
         }
         
-        oauthRequest = OAuthRequest.init(clientId: Bundle.main.gitHubClientId,
-                                         clientSecret: Bundle.main.gitHubClientSecret,
-                                         authorizeUrl: "https://github.com/login/oauth/authorize",
-                                         accessTokenUrl: "https://github.com/login/oauth/access_token",
-                                         responseType: "code",
-                                         on: viewController)
+        oauthRequest = OAuthRequest(clientId: Bundle.main.gitHubClientId,
+                                    clientSecret: Bundle.main.gitHubClientSecret,
+                                    authorizeUrl: "https://github.com/login/oauth/authorize",
+                                    accessTokenUrl: "https://github.com/login/oauth/access_token",
+                                    responseType: "code",
+                                    on: oauthViewControllerProvider)
         { result in
             self.oauthRequest = nil
             
             switch result {
-            case .success(let oauthToken, let oauthRefreshToken, _):
-                self.keychain[self.keychainTokenKey] = oauthToken
+            case .success(let token):
+                self.keychain[self.keychainTokenKey] = token
                 self.loadUser(completion: completion)
                 
             case .error(let error):

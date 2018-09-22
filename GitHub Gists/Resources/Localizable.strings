@@ -14,13 +14,20 @@
 
 "error.noInternet.title" = "No internet connection";
 "error.noInternet.subtitle" = "Please check your internrt connection\nand pulldown to refresh";
+"error.noInternet.message" = "Please check your internrt connection";
+
 "error.serverError.title" = "Oops an error occurred";
-"error.serverError.subtitle" = "Pulldown to refresh";
+
 "error.userNotFound.titleformat" = "User %@ not found";
-"error.userNotFound.subtitle" = "Please check the entered username";
+
 "error.noGists.title" = "User has no gists";
 "error.gistNotFound.title" = "Gist not found";
 "error.noFileContent.title" = "File is empty";
+
+"error.unauthorized.title" = "Authorization failed";
+"error.unauthorized.message" = "Please try login again";
+
+"error.default.subtitle" = "Please check the entered username";
 "error.reloadButton" = "Reload";
 
 "createGist.descriptionPlaceholder" = "Description";
