@@ -19,10 +19,10 @@ class GistsListViewController: UIViewController,
     var reloadContentAfterAppeare: Bool = false
     var model: GistsListModel! {
         willSet {
-            if (model != nil) {
+            if model != nil {
                 model.observer = nil
             }
-            if (frc != nil) {
+            if frc != nil {
                 frc.delegate = nil
                 frc = nil
             }
@@ -42,20 +42,20 @@ class GistsListViewController: UIViewController,
         super.viewDidLoad()
         configureUI()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        title = model?.username;
+        title = model?.username
         self.navigationController?.setNavigationBarHidden(false, animated: false)
-        
+
         tableView.reloadData()
-        
+
         placeholder.error = nil
         if reloadContentAfterAppeare || isEmpty {
             reloadContentAfterAppeare = false
             model.reloadGistsList()
         }
-        
+
         if model.canCreateGist && navigationItem.rightBarButtonItem == nil {
             navigationItem.rightBarButtonItem
                 = UIBarButtonItem(barButtonSystemItem: .add,
@@ -65,52 +65,52 @@ class GistsListViewController: UIViewController,
             navigationItem.rightBarButtonItem = nil
         }
     }
-    
+
     @objc func createGist(_ item: UIBarButtonItem) {
         router.showCreateGist()
     }
-    
+
     // MARK: UI
-    
+
     @IBOutlet weak var tableView: UITableView!
     private let gistCellIdentifier = "GistCell"
-    
+
     weak var placeholder: Placeholder!
-    
+
     func configureUI() {
         tableView.register(UINib.init(nibName: "GistTableViewCell", bundle: nil),
                            forCellReuseIdentifier: gistCellIdentifier)
-        
+
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl!.addTarget(self, action: #selector(handleRefresh(_:)),
                                  for: UIControlEvents.valueChanged)
-        
+
         tableView.tableFooterView = LoadMoreIndicator()
-        
+
         placeholder = Placeholder.fromNib()
         placeholder.add(on: view, animated: false)
     }
-    
+
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
         reloadGistsList()
     }
-    
+
     var loadMoreIndicator: LoadMoreIndicator? {
         return tableView.tableFooterView as? LoadMoreIndicator
     }
-    
+
     // MARK: Private
-    
+
     private var isEmpty: Bool {
         return (frc.sections?.first?.numberOfObjects ?? 0) == 0
     }
-    
+
     private var availableLoadingMore: Bool {
         return !isEmpty &&
                !(tableView.refreshControl?.isRefreshing ?? false) &&
                !model.isLoading
     }
-    
+
     private func reloadGistsList() {
         placeholder.hide()
         placeholder.error = nil
@@ -118,26 +118,25 @@ class GistsListViewController: UIViewController,
         loadMoreIndicator?.stopAnimating()
         model.reloadGistsList()
     }
-    
+
     private func loadMoreIfPosible() {
         guard availableLoadingMore else {
             return
         }
-        
+
         placeholder.hide()
         placeholder.error = nil
 
         loadMoreIndicator?.startAnimating()
         model.loadNextPage()
     }
-    
-    // MARK:  GistsListModelObserver
-    
+
+    // MARK: GistsListModelObserver
+
     func finishLoading(successful: Bool, withError error: GistsError?) {
         tableView.refreshControl?.endRefreshing()
         loadMoreIndicator?.stopAnimating()
 
-        
         if isEmpty {
             placeholder.error = error ?? .noGists
             placeholder.show()
@@ -145,39 +144,40 @@ class GistsListViewController: UIViewController,
             placeholder.hide()
         }
     }
-    
+
     // MARK: UITableViewDataSource
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return frc?.sections?.first?.numberOfObjects ?? 0
     }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: gistCellIdentifier, for: indexPath)
-            as! GistTableViewCell
 
-        if let gists = frc?.object(at: indexPath) {
-            cell.configure(with: gists)
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: gistCellIdentifier, for: indexPath)
+                                                    as? GistTableViewCell {
+            if let gists = frc?.object(at: indexPath) {
+                cell.configure(with: gists)
+            }
+            return cell
         }
-        
-        return cell
+
+        return UITableViewCell()
     }
-    
+
     // MARK: UITableViewDelegate
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         if let gist = frc?.object(at: indexPath) {
             router!.showGistsGistsDetails(withUserName: gist.username, gistId: gist.id)
         }
     }
-    
+
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offset = -scrollView.contentInset.top - scrollView.contentOffset.y
         let opacity = max(min(1 - offset / 50, 1), 0)
         placeholder.show(opacity: Float(opacity))
     }
-    
+
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         let currentOffset = scrollView.contentOffset.y
         let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height
@@ -186,13 +186,13 @@ class GistsListViewController: UIViewController,
             loadMoreIfPosible()
         }
     }
-    
+
     // MARK: NSFetchedResultsControllerDelegate
 
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.beginUpdates()
     }
-    
+
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
                     didChange anObject: Any,
                     at indexPath: IndexPath?,
@@ -201,23 +201,21 @@ class GistsListViewController: UIViewController,
         switch type {
         case .insert:
             tableView.insertRows(at: [newIndexPath!], with: .automatic)
-            break
         case .delete:
             tableView.deleteRows(at: [indexPath!], with: .automatic)
-            break
         case .move:
-            if (indexPath != newIndexPath) {
+            if indexPath != newIndexPath {
                 tableView.moveRow(at: indexPath!, to: newIndexPath!)
-                break
+            } else {
+                tableView.reloadRows(at: [indexPath!], with: .automatic)
             }
         case .update:
             tableView.reloadRows(at: [indexPath!], with: .automatic)
-            break
         }
     }
-    
+
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.endUpdates()
     }
-    
+
 }

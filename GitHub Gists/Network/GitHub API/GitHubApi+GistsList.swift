@@ -10,16 +10,16 @@ import Foundation
 import Alamofire
 
 extension GitHubApi {
-    
+
     private func gistsListUrl(ofUserWithName username: String,
                               page: Int, perPage: Int) -> String {
         return "https://api.github.com/users/\(username)/gists?page=\(page)&per_page=\(perPage)"
     }
-    
+
     private func gistsListUrl(page: Int, perPage: Int) -> String {
         return "https://api.github.com/gists?page=\(page)&?per_page=\(perPage)"
     }
-    
+
     public func loadGistsList(ofUserWithName username: String,
                               page: Int, perPage: Int,
                               completion: @escaping (RequestResult<[Gist]>) -> Void) -> DataRequest {
@@ -37,16 +37,16 @@ extension GitHubApi {
                 completion(.error(gistsError))
                 return
             }
-            
+
             do {
                 let decoder = JSONDecoder()
                 decoder.dateDecodingStrategy = .iso8601
-                let loadedGists = try decoder.decode([Gist].self, from:response.data!)
+                let loadedGists = try decoder.decode([Gist].self, from: response.data!)
                 completion(.success(loadedGists))
             } catch {
                 completion(.error(.userNotFound(username: username)))
             }
         }
     }
-    
+
 }

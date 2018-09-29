@@ -9,28 +9,29 @@
 import MagicalRecord
 
 extension MagicalRecord {
-    
+
     static func saveGists(_ gistsToSave: [Gist],
-                          username:String,
+                          username: String,
                           append: Bool,
-                          completion: @escaping (Bool, Error?)->Void)  {
+                          completion: @escaping (Bool, Error?) -> Void) {
         MagicalRecord.save({ (context) in
             if !append {
                 GistEntity.delete(with: username,
-                                  exclusionGistsWithIds: gistsToSave.compactMap { $0.id },
+                                  exclusionGistsWithIds: gistsToSave.compactMap { $0.gistId },
                                   in: context)
             }
-            
+
             for gist in gistsToSave {
-                guard let gistId = gist.id else {
+                guard let gistId = gist.gistId else {
                     continue
                 }
-                
-                let gistEntity = GistEntity.findOrCreate(with: username,
-                                                         id: gistId,
-                                                         in: context)
+
+                guard let gistEntity = GistEntity.findOrCreate(with: username, gistId: gistId, in: context) else {
+                    continue
+                }
+
                 gistEntity.fill(from: gist)
-                
+
                 let files = gist.files.values
                 GistFileEntity.delete(from: gistEntity,
                                       exclusionFilesWithNames: files.compactMap { $0.filename },
@@ -45,22 +46,20 @@ extension MagicalRecord {
                     fileEntity.fill(from: file, overwriteContent: false)
                 }
             }
-        }, completion:completion)
+        }, completion: completion)
     }
-    
+
     static func saveGist(_ gistToSave: Gist,
-                         username:String,
-                         completion: @escaping (Bool, Error?)->Void)  {
+                         username: String,
+                         completion: @escaping (Bool, Error?) -> Void) {
         MagicalRecord.save({ (context) in
-            guard let gistId = gistToSave.id,
-                let gistEntity = GistEntity.find(with: username,
-                                                 id: gistId,
-                                                 in: context) else {
-                                                    return
+            guard let gistId = gistToSave.gistId,
+                let gistEntity = GistEntity.find(with: username, gistId: gistId, in: context) else {
+                    return
             }
-            
+
             gistEntity.fill(from: gistToSave)
-            
+
             let files = gistToSave.files.values
             GistFileEntity.delete(from: gistEntity,
                                   exclusionFilesWithNames: files.compactMap { $0.filename },
@@ -76,5 +75,5 @@ extension MagicalRecord {
             }
         }, completion: completion)
     }
-    
+
 }

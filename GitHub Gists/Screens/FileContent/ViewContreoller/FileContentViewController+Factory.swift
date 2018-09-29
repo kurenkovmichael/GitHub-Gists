@@ -11,9 +11,9 @@ import UIKit
 extension FileContentViewController {
 
     static func with(model: FileContentModel) -> FileContentViewController {
-        let vc = FileContentViewController.init(nibName: "FileContentViewController", bundle: nil)
-        vc.model = model
-        return vc;
+        let viewController = FileContentViewController.init(nibName: "FileContentViewController", bundle: nil)
+        viewController.model = model
+        return viewController
     }
-    
+
 }

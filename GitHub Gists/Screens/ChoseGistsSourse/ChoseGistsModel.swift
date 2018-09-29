@@ -16,30 +16,30 @@ enum GitHubLoginResult {
 class ChoseGistsModel {
 
     let api: GitHubApi
-    
+
     init(api: GitHubApi) {
         self.api = api
     }
-    
+
     // MARK: Entered GitHub name
-    
+
     private let usernameKey = "Username"
-    
+
     var previousChosedUsername: String? {
         return UserDefaults.standard.string(forKey: usernameKey)
     }
-    
+
     func choseUsername( _ lastUsername: String?) {
         UserDefaults.standard.set(lastUsername, forKey: usernameKey)
     }
-    
+
     func cleanChosedUsername() {
         UserDefaults.standard.removeObject(forKey: usernameKey)
     }
-    
+
     // MARK: Login
-  
-    func loginToGitHub(on viewController: UIViewController, completion: @escaping (GitHubLoginResult)->Void)  {
+
+    func loginToGitHub(on viewController: UIViewController, completion: @escaping (GitHubLoginResult) -> Void) {
         api.login(on: viewController) { (result) in
             switch result {
             case .success(let username):
@@ -50,9 +50,9 @@ class ChoseGistsModel {
             }
         }
     }
-    
+
     func logout() {
         api.logout()
     }
-    
+
 }

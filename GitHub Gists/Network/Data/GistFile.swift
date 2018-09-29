@@ -9,16 +9,15 @@
 import Foundation
 
 class GistFile: Codable {
-    
+
     var filename: String?
     var type: String?
     var language: String?
     var rawUrl: String?
     var size: Int = 0
     var content: String?
-    
-    enum CodingKeys: String, CodingKey
-    {
+
+    enum CodingKeys: String, CodingKey {
         case filename
         case type
         case language
@@ -26,5 +25,5 @@ class GistFile: Codable {
         case size
         case content
     }
-    
+
 }

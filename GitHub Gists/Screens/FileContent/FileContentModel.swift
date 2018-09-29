@@ -15,37 +15,37 @@ protocol FileContentModelObserver {
 }
 
 class FileContentModel {
-    
+
     let username: String
     let gistId: String
     let filename: String
-    
+
     let api: GitHubApi
 
     var observer: FileContentModelObserver?
-    
+
     private var avtiveRequest: DataRequest?
     var loading: Bool {
         return avtiveRequest != nil
     }
-    
-    init(withUsername username:String, gistId: String, filename: String, api: GitHubApi) {
+
+    init(withUsername username: String, gistId: String, filename: String, api: GitHubApi) {
         self.username = username
         self.gistId = gistId
         self.filename = filename
         self.api = api
     }
-    
+
     public func obtainFileEntity() -> GistFileEntity? {
         let predicate = GistFileEntity.predicate(withGistId: gistId, filename: filename)
         return GistFileEntity.mr_findFirst(with: predicate) as? GistFileEntity
     }
-    
+
     public func reloadContent() {
         if let oldRequest = avtiveRequest {
             oldRequest.cancel()
         }
-        
+
         avtiveRequest = api.loadGist(with: gistId) { (result) in
             switch result {
             case .success(let loadedGist):
@@ -61,10 +61,10 @@ class FileContentModel {
             }
         }
     }
-    
+
     private func finishLoading(successful: Bool, withError error: GistsError?) {
         avtiveRequest = nil
         observer?.finishLoading(successful: successful, withError: error)
     }
-    
+
 }

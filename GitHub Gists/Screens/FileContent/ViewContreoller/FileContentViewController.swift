@@ -10,10 +10,10 @@ import UIKit
 import CoreData
 
 class FileContentViewController: UIViewController, FileContentModelObserver {
-    
-    var model: FileContentModel!  {
+
+    var model: FileContentModel! {
         willSet {
-            if (model != nil) {
+            if model != nil {
                 model.observer = nil
                 updateContent()
             }
@@ -22,14 +22,14 @@ class FileContentViewController: UIViewController, FileContentModelObserver {
             model.observer = self
         }
     }
-    
+
     @IBOutlet weak var contentTextView: UITextView!
-    
+
     weak var placeholder: Placeholder!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         placeholder = Placeholder.fromNib()
         placeholder.add(on: view, animated: false)
         placeholder.buttonTitle = NSLocalizedString("placeholder.reloadButton", comment: "")
@@ -38,7 +38,7 @@ class FileContentViewController: UIViewController, FileContentModelObserver {
             self?.model.reloadContent()
         }
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         updateTitle()
@@ -46,14 +46,14 @@ class FileContentViewController: UIViewController, FileContentModelObserver {
     }
 
     private func updateTitle() {
-        title = model.filename;
+        title = model.filename
     }
-    
+
     private func updateContent() {
         guard isViewLoaded else {
             return
         }
-        
+
         if let file = model.obtainFileEntity(),
             let content = file.content {
             contentTextView.text = content
@@ -65,13 +65,13 @@ class FileContentViewController: UIViewController, FileContentModelObserver {
             contentTextView.text = nil
         }
     }
-    
+
     // MARK: FileContentModelObserver
-    
+
     func finishLoading(successful: Bool, withError error: GistsError?) {
         placeholder.loading = false
         placeholder.error = error
         updateContent()
     }
-    
+
 }

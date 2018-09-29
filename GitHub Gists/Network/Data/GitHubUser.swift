@@ -10,7 +10,7 @@ import Foundation
 
 class GitHubUser: Codable {
     var login: String?
-    var id: Int?
+    var userId: Int?
     var url: String?
     var type: String?
     var name: String?

@@ -22,13 +22,12 @@ class GistFileTableViewCell: UITableViewCell {
         typeLabel.text = nil
         sizeLabel.text = nil
     }
-    
+
     private lazy var byteCountFormatter: ByteCountFormatter = {
         var formatter = ByteCountFormatter()
         formatter.countStyle = .file
-        return formatter;
+        return formatter
     }()
-    
 
     func configure(file: GistFileEntity) {
         filenameLabel.text = file.filename
@@ -40,5 +39,5 @@ class GistFileTableViewCell: UITableViewCell {
         }
         sizeLabel.text = byteCountFormatter.string(fromByteCount: file.size?.int64Value ?? 0)
     }
-    
+
 }

@@ -9,10 +9,10 @@
 import Foundation
 
 extension Error {
-    
+
     var isNoConnection: Bool {
         return (self as NSError).domain == NSURLErrorDomain &&
                (self as NSError).code == NSURLErrorNotConnectedToInternet
     }
-    
+
 }

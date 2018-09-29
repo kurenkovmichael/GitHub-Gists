@@ -9,12 +9,18 @@
 import Foundation
 
 extension Bundle {
-    
-    var gitHubClientId: String {
-        return infoDictionary! ["GitHub_Client_ID"] as! String
+
+    var gitHubClientId: String? {
+        if let info = infoDictionary {
+            return info["GitHub_Client_ID"] as? String
+        }
+        return nil
     }
-    
-    var gitHubClientSecret: String {
-        return infoDictionary! ["GitHub_Client_Secret"] as! String
+
+    var gitHubClientSecret: String? {
+        if let info = infoDictionary {
+            return info["GitHub_Client_Secret"] as? String
+        }
+        return nil
     }
 }

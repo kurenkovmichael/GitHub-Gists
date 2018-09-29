@@ -9,15 +9,15 @@
 import UIKit
 
 extension UIButton {
-    
+
     func configureUI() {
         backgroundColor = .darkGray
         setTitleColor(.white, for: .normal)
         setTitleColor(.lightGray, for: .disabled)
         setTitleColor(.lightGray, for: .highlighted)
-        
+
         layer.cornerRadius = 22
         layer.masksToBounds = true
     }
-    
+
 }

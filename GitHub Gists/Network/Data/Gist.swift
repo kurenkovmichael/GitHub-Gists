@@ -9,12 +9,12 @@
 import Foundation
 
 class Gist: Codable {
-    
-    var id: String?
+
+    var gistId: String?
     var nodeId: String?
-    
+
     var gistsDescription: String?
-    
+
     var isPublic: Bool = false
 
     var createdAt: Date?
@@ -28,16 +28,15 @@ class Gist: Codable {
     var gitPushUrl: String?
     var htmlUrl: String?
 
-    var files: [String:GistFile] = [:]
+    var files: [String: GistFile] = [:]
 
     var comments: Int = 0
     var commentsUrl: String?
 
     var isTruncated: Bool?
-    
-    enum CodingKeys: String, CodingKey
-    {
-        case id
+
+    enum CodingKeys: String, CodingKey {
+        case gistId = "id"
         case nodeId = "node_id"
         case gistsDescription = "description"
         case isPublic = "public"
@@ -54,5 +53,5 @@ class Gist: Codable {
         case commentsUrl = "comments_url"
         case isTruncated = "truncated"
     }
-    
+
 }

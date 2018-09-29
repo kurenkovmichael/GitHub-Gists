@@ -13,28 +13,30 @@ import OAuthSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    
+
     let container = Container()
     var rourer: Rourer!
-    
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        
+
+    func application(_ application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+
         MagicalRecord.setupCoreDataStack()
-        
+
         rourer = Rourer(withDiContainer: container)
         container.setup(withOAuthVCProvider: rourer)
-        
+
         rourer.showStartScreen()
-        
+
         return true
     }
-    
-    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-        if (url.scheme == "githubgists" &&  url.host == "github-login") {
+
+    func application(_ app: UIApplication,
+                     open url: URL,
+                     options: [UIApplicationOpenURLOptionsKey: Any] = [:]) -> Bool {
+        if url.scheme == "githubgists" && url.host == "github-login" {
             OAuthSwift.handle(url: url)
         }
         return true
     }
-    
-}
 
+}

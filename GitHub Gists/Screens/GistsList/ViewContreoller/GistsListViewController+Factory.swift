@@ -11,10 +11,10 @@ import UIKit
 extension GistsListViewController {
 
     static func with(model: GistsListModel, rourer: Rourer) -> GistsListViewController {
-        let vc = GistsListViewController.init(nibName: "GistsListViewController", bundle: nil)
-        vc.model = model
-        vc.router = rourer
-        return vc;
+        let viewController = GistsListViewController.init(nibName: "GistsListViewController", bundle: nil)
+        viewController.model = model
+        viewController.router = rourer
+        return viewController
     }
-    
+
 }

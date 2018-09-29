@@ -473,6 +473,7 @@
 			buildPhases = (
 				F3440CE7CF95BC0F7AB23BBD /* [CP] Check Pods Manifest.lock */,
 				CFBD127B214AFE31000326E5 /* Mogenerator */,
+				CF673B65215F775600A4F7BC /* Swift lint */,
 				CFA261B22149650500C5D2B5 /* Sources */,
 				CFA261B32149650500C5D2B5 /* Frameworks */,
 				CFA261B42149650500C5D2B5 /* Resources */,
@@ -568,6 +569,24 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GitHub Gists/Pods-GitHub Gists-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		CF673B65215F775600A4F7BC /* Swift lint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Swift lint";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 		CFBD127B214AFE31000326E5 /* Mogenerator */ = {
 			isa = PBXShellScriptBuildPhase;

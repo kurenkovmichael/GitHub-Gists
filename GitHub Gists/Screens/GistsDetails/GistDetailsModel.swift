@@ -15,7 +15,7 @@ protocol GistDetailsModelObserver {
 }
 
 class GistDetailsModel {
-    
+
     let username: String
     let gistId: String
 
@@ -27,29 +27,31 @@ class GistDetailsModel {
     var loading: Bool {
         return avtiveRequest != nil
     }
-    
+
     init(withUsername username: String, gistId: String, api: GitHubApi) {
         self.username = username
         self.gistId = gistId
         self.api = api
     }
-    
+
     public func obtainGistEntity() -> GistEntity? {
-        let predicate = GistEntity.predicate(with: username, id: gistId)
+        let predicate = GistEntity.predicate(with: username, gistId: gistId)
         return GistEntity.mr_findFirst(with: predicate) as? GistEntity
     }
-    
-    func obtainFilesFRC() -> NSFetchedResultsController<GistFileEntity> {
+
+    func obtainFilesFRC() -> NSFetchedResultsController<GistFileEntity>? {
         let predicate = GistFileEntity.predicate(with: gistId)
-        return GistFileEntity.mr_fetchAllGrouped(by: nil, with: predicate, sortedBy: "order", ascending: true)
-            as! NSFetchedResultsController<GistFileEntity>
+        if let frc = GistFileEntity.mr_fetchAllGrouped(by: nil, with: predicate, sortedBy: "order", ascending: true) {
+            return frc as? NSFetchedResultsController<GistFileEntity>
+        }
+        return nil
     }
 
     public func reloadGist() {
         if let oldRequest = avtiveRequest {
             oldRequest.cancel()
         }
-        
+
         avtiveRequest = api.loadGist(with: gistId) { (result) in
             switch result {
             case .success(let loadedGist):
@@ -65,10 +67,10 @@ class GistDetailsModel {
             }
         }
     }
-    
+
     private func finishLoading(successful: Bool, withError error: GistsError?) {
         avtiveRequest = nil
         observer?.finishLoading(successful: successful, withError: error)
     }
-    
+
 }

@@ -17,65 +17,63 @@ protocol OAuthViewControllerProvider {
 }
 
 class OAuthRequest: NSObject, SFSafariViewControllerDelegate {
-    
+
     enum OAuthResult {
         case success(token: String)
         case canceled
         case error(Error?)
     }
-    
+
     init(clientId: String,
          clientSecret: String,
          authorizeUrl: String,
          accessTokenUrl: String,
          responseType: String,
          on vcProvider: OAuthViewControllerProvider?,
-         completion: @escaping (OAuthResult)->Void) {
-        
+         completion: @escaping (OAuthResult) -> Void) {
         self.oauth = OAuth2Swift(consumerKey: clientId,
                             consumerSecret: clientSecret,
                             authorizeUrl: authorizeUrl,
                             accessTokenUrl: accessTokenUrl,
-                            responseType:  responseType )
+                            responseType: responseType)
         self.vcProvider = vcProvider
         self.completion = completion
     }
-    
+
     private var oauth: OAuth2Swift
     private var vcProvider: OAuthViewControllerProvider?
-    private var completion: ((OAuthResult)->Void)?
-    
+    private var completion: ((OAuthResult) -> Void)?
+
     private var oauthRequestHandle: OAuthSwiftRequestHandle?
-    
+
     func login() {
         if let oldHandle = oauthRequestHandle {
             oldHandle.cancel()
         }
-        
-        if let vc = vcProvider?.viewController() {
-            let safariURLHandler = SafariURLHandler(viewController: vc, oauthSwift: oauth)
+
+        if let viewController = vcProvider?.viewController() {
+            let safariURLHandler = SafariURLHandler(viewController: viewController, oauthSwift: oauth)
             safariURLHandler.delegate = self
             oauth.authorizeURLHandler = safariURLHandler
         }
-        
-        oauthRequestHandle =
-            oauth.authorize(withCallbackURL: URL(string: "githubgists://github-login")!,
-                            scope: "gist", state:NSUUID().uuidString, success:
-                { credential, response, parameters in
-                    self.oauthRequestHandle = nil
-                    if let completion = self.completion {
-                        completion(.success(token: credential.oauthToken))
-                    }
-            },
-                            failure:
-                { error in
-                    self.oauthRequestHandle = nil
-                    if let completion = self.completion {
-                        completion(.error(error))
-                    }
-            })
+
+        oauthRequestHandle = oauth.authorize(withCallbackURL: URL(string: "githubgists://github-login")!,
+                                             scope: "gist",
+                                             state: NSUUID().uuidString,
+                                             success: { credential, _, _ in
+                                                self.oauthRequestHandle = nil
+                                                if let completion = self.completion {
+                                                    completion(.success(token: credential.oauthToken))
+                                                }
+        },
+                                             failure: { error in
+                                                self.oauthRequestHandle = nil
+                                                if let completion = self.completion {
+                                                    completion(.error(error))
+                                                }
+        })
     }
-    
+
     func cancel() {
         if let oldHandle = oauthRequestHandle {
             oldHandle.cancel()
@@ -84,11 +82,11 @@ class OAuthRequest: NSObject, SFSafariViewControllerDelegate {
             completion(.canceled)
         }
     }
-    
+
     // MARK: SFSafariViewControllerDelegate
-    
+
     func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
         cancel()
     }
-    
+
 }

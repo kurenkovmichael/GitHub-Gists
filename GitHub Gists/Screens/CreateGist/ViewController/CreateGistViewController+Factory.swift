@@ -9,12 +9,12 @@
 import Foundation
 
 extension CreateGistViewController {
-    
+
     static func with(model: CreateGistModel, router: Rourer) -> CreateGistViewController {
-        let vc = CreateGistViewController.init(nibName: "CreateGistViewController", bundle: nil)
-        vc.model = model
-        vc.router = router
-        return vc;
+        let viewController = CreateGistViewController.init(nibName: "CreateGistViewController", bundle: nil)
+        viewController.model = model
+        viewController.router = router
+        return viewController
     }
-    
+
 }

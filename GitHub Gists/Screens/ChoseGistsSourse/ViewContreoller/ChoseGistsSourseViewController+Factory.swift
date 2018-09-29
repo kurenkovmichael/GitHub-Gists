@@ -9,12 +9,12 @@
 import UIKit
 
 extension ChoseGistsSourseViewController {
-    
+
     static func with(model: ChoseGistsModel, rourer: Rourer) -> ChoseGistsSourseViewController {
-        let vc = ChoseGistsSourseViewController.init(nibName: "ChoseGistsSourseViewController", bundle: nil)
-        vc.model = model
-        vc.rourer = rourer
-        return vc;
+        let viewController = ChoseGistsSourseViewController.init(nibName: "ChoseGistsSourseViewController", bundle: nil)
+        viewController.model = model
+        viewController.rourer = rourer
+        return viewController
     }
 
 }

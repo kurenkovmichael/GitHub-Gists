@@ -9,7 +9,7 @@
 import UIKit
 
 class Placeholder: UIView {
-    
+
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var actionButton: UIButton!
@@ -17,30 +17,30 @@ class Placeholder: UIView {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
     // MARK: Placeholder
-    
+
     var error: GistsError? = nil {
         didSet {
             updateTexts()
-            if (isShown) {
+            if isShown {
                 show()
             }
         }
     }
-    
-    var buttonPressed: (()->Void)?
+
+    var buttonPressed: (() -> Void)?
     var buttonTitle: String? {
         didSet {
             actionButton.setTitle(buttonTitle, for: .normal)
             updateActions()
         }
     }
-    
+
     var loading: Bool = false {
         didSet {
             updateActions()
         }
     }
-    
+
     private var animating = false
     private func updateActions() {
         let activityShown = self.loading
@@ -51,7 +51,7 @@ class Placeholder: UIView {
              actionButton.isHidden != activityShown) else {
                 return
         }
-        
+
         animating = true
         if !actionsHidden {
             self.actionsContainer.isHidden = false
@@ -62,10 +62,11 @@ class Placeholder: UIView {
             self.actionButton.alpha = 0
             self.actionButton.isHidden = false
         }
-        
+
         UIView.animate(withDuration: 0.3, animations: {
             self.actionButton.alpha = activityShown ? 0 : 1
-        }) { _ in
+        },
+                       completion: { _ in
             if actionsHidden {
                 self.actionsContainer.isHidden = true
             }
@@ -77,15 +78,15 @@ class Placeholder: UIView {
             }
             self.animating = false
             self.updateActions()
-        }
+        })
     }
-    
-    class func fromNib() -> Placeholder {
+
+    class func fromNib() -> Placeholder? {
         let nib = UINib(nibName: "Placeholder", bundle: nil)
         let views = nib.instantiate(withOwner: nil, options: nil)
-        return views.first as! Placeholder
+        return views.first as? Placeholder
     }
-    
+
     func add(on view: UIView, animated: Bool) {
         translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(self)
@@ -95,28 +96,28 @@ class Placeholder: UIView {
         view.bringSubview(toFront: self)
         updateTexts()
     }
-    
+
     private var isShown = false
     private var opacity: Float = 1
-    
+
     private let animationKey = "opacity animation"
     private let animationDuration = 0.3
-    
+
     func show(opacity: Float? = nil) {
         isShown = true
         if let opacity = opacity {
             self.opacity = opacity
         }
-        
+
         let opacityToUse = (error != nil) ? self.opacity : 0
-        
+
         let animation = CABasicAnimation(keyPath: "opacity")
         animation.toValue = opacityToUse
         animation.duration = animationDuration
         layer.add(animation, forKey: animationKey)
         layer.opacity = opacityToUse
     }
-    
+
     func hide() {
         isShown = false
         let animation = CABasicAnimation(keyPath: "opacity")
@@ -125,9 +126,9 @@ class Placeholder: UIView {
         layer.add(animation, forKey: animationKey)
         layer.opacity = 0
     }
-    
+
     // MARK: UiView
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         titleLabel.text = nil
@@ -135,7 +136,7 @@ class Placeholder: UIView {
         actionButton.configureUI()
         hide()
     }
-    
+
     override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
         let convertedPoint = actionButton.convert(point, from: self)
         if let hitView = actionButton.hitTest(convertedPoint, with: event) {
@@ -143,15 +144,15 @@ class Placeholder: UIView {
         }
         return nil
     }
-    
+
     // MARK: Private
-    
+
     @IBAction func actionButtonPressed(_ sender: UIButton) {
         if let handler = buttonPressed {
             handler()
         }
     }
-    
+
     private func updateTexts() {
         titleLabel.text = error?.localizedTitle
         subtitleLabel.text = error?.localizedSubtitle

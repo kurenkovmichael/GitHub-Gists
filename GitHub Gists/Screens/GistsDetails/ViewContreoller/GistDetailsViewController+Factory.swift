@@ -9,12 +9,12 @@
 import UIKit
 
 extension GistDetailsViewController {
-    
+
     static func with(model: GistDetailsModel, rourer: Rourer) -> GistDetailsViewController {
-        let vc = GistDetailsViewController.init(nibName: "GistDetailsViewController", bundle: nil)
-        vc.model = model
-        vc.router = rourer
-        return vc;
+        let viewController = GistDetailsViewController.init(nibName: "GistDetailsViewController", bundle: nil)
+        viewController.model = model
+        viewController.router = rourer
+        return viewController
     }
-    
+
 }
