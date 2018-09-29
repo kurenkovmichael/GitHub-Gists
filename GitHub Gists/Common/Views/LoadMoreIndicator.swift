@@ -59,7 +59,7 @@ class LoadMoreIndicator: UIView {
     private func setup() {
         let shift = LoadMoreIndicator.defaultShift
 
-        spiner = UIActivityIndicatorView.init(activityIndicatorStyle: .gray)
+        spiner = UIActivityIndicatorView.init(style: .gray)
         spiner.translatesAutoresizingMaskIntoConstraints = false
         spiner.hidesWhenStopped = true
         spiner.alpha = 0

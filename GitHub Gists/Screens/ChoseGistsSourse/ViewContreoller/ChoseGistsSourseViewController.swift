@@ -129,24 +129,24 @@ class ChoseGistsSourseViewController: UIViewController {
     func startToObserveKeyboardFrameChanges() {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(keyboardShown),
-                                               name: .UIKeyboardWillChangeFrame,
+                                               name: UIResponder.keyboardWillChangeFrameNotification,
                                                object: nil)
     }
 
     func stopToObserveKeyboardFrameChanges() {
         NotificationCenter.default.removeObserver(self,
-                                                  name: .UIKeyboardWillChangeFrame,
+                                                  name: UIResponder.keyboardWillChangeFrameNotification,
                                                   object: nil)
     }
 
     @objc func keyboardShown(notification: NSNotification) {
         guard let info = notification.userInfo,
-              let frameEndValue = info[UIKeyboardFrameEndUserInfoKey] as? NSValue else {
+              let frameEndValue = info[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else {
                 return
         }
 
         let keyboardFrame = view.convert(frameEndValue.cgRectValue, from: nil)
-        let duration = info[UIKeyboardAnimationDurationUserInfoKey] as? TimeInterval
+        let duration = info[UIResponder.keyboardAnimationDurationUserInfoKey] as? TimeInterval
         updateContentPosition(forKeyboardFrame: keyboardFrame, duration: duration ?? 0.25)
     }
 }

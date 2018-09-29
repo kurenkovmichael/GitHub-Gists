@@ -93,7 +93,7 @@ class Placeholder: UIView {
         view.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         view.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         view.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        view.bringSubview(toFront: self)
+        view.bringSubviewToFront(self)
         updateTexts()
     }
 

@@ -67,7 +67,7 @@ class GistDetailsViewController: UIViewController,
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl!.addTarget(self,
                                             action: #selector(handleRefresh(_:)),
-                                            for: UIControlEvents.valueChanged)
+                                            for: UIControl.Event.valueChanged)
 
         tableView.tableFooterView = LoadMoreIndicator()
     }
