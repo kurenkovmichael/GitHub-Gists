@@ -11,8 +11,8 @@ import Swinject
 
 class Rourer: OAuthViewControllerProvider {
 
-    var window: UIWindow?
-    var diContainer: Container
+    private var window: UIWindow?
+    private let diContainer: Container
 
     init(withDiContainer diContainer: Container) {
         self.diContainer = diContainer
