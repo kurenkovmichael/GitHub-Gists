@@ -25,7 +25,7 @@ class CreateGistViewController: UIViewController,
     var router: Rourer!
     var model: CreateGistModel! {
         willSet {
-            if model != nil {
+            if let model = model {
                 model.observer = nil
             }
         }

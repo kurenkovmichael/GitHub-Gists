@@ -19,13 +19,13 @@ class GistsListViewController: UIViewController,
     var reloadContentAfterAppeare: Bool = false
     var model: GistsListModel! {
         willSet {
-            if model != nil {
+            if let model = model {
                 model.observer = nil
             }
-            if frc != nil {
+            if let frc = frc {
                 frc.delegate = nil
-                frc = nil
             }
+            frc = nil
         }
         didSet {
             model.observer = self

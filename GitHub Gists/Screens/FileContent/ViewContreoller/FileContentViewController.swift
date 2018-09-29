@@ -13,7 +13,7 @@ class FileContentViewController: UIViewController, FileContentModelObserver {
 
     var model: FileContentModel! {
         willSet {
-            if model != nil {
+            if let model = model {
                 model.observer = nil
                 updateContent()
             }

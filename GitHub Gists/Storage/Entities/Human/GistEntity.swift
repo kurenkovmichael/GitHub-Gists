@@ -25,8 +25,8 @@ open class GistEntity: _GistEntity {
                              gistId: String,
                              in context: NSManagedObjectContext?) -> GistEntity? {
         let foundGist = find(with: username, gistId: gistId, in: context)
-        if foundGist != nil {
-            return foundGist!
+        if let foundGist = foundGist {
+            return foundGist
         }
 
         if let createdGist = GistEntity.mr_create(in: context) as? GistEntity {
