@@ -10,7 +10,7 @@ import Foundation
 
 class Gist: Codable {
 
-    var gistId: String?
+    var gistId: String
     var nodeId: String?
 
     var gistsDescription: String?

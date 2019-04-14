@@ -305,6 +305,38 @@
             endingLineNumber = "44"
             landmarkName = "loginToGitHub(on:completion:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (GitHub_Gists.GitHubApi.RequestResult&lt;Swift.String&gt;) -&gt; () in GitHub_Gists.ChoseGistsModel.loginToGitHub(on: __C.UIViewController, completion: (GitHub_Gists.GitHubLoginResult) -&gt; ()) -&gt; ()"
+                  moduleName = "GitHub Gists"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mihailkurenkov/Documents/Projects/public/GitHub%20Gists/GitHub%20Gists/Screens/ChoseGistsSourse/ChoseGistsModel.swift"
+                  timestampString = "576933861.154686"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "45"
+                  endingLineNumber = "45"
+                  offsetFromSymbolStart = "256">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (GitHub_Gists.GitHubApi.RequestResult&lt;Swift.String&gt;) -&gt; () in GitHub_Gists.ChoseGistsModel.loginToGitHub(on: __C.UIViewController, completion: (GitHub_Gists.GitHubLoginResult) -&gt; ()) -&gt; ()"
+                  moduleName = "GitHub Gists"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mihailkurenkov/Documents/Projects/public/GitHub%20Gists/GitHub%20Gists/Screens/ChoseGistsSourse/ChoseGistsModel.swift"
+                  timestampString = "576933861.1577851"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "45"
+                  endingLineNumber = "45"
+                  offsetFromSymbolStart = "456">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

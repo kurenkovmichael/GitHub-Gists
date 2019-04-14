@@ -22,11 +22,7 @@ extension MagicalRecord {
             }
 
             for gist in gistsToSave {
-                guard let gistId = gist.gistId else {
-                    continue
-                }
-
-                guard let gistEntity = GistEntity.findOrCreate(with: username, gistId: gistId, in: context) else {
+                guard let gistEntity = GistEntity.findOrCreate(with: username, gistId: gist.gistId, in: context) else {
                     continue
                 }
 
@@ -53,8 +49,7 @@ extension MagicalRecord {
                          username: String,
                          completion: @escaping (Bool, Error?) -> Void) {
         MagicalRecord.save({ (context) in
-            guard let gistId = gistToSave.gistId,
-                let gistEntity = GistEntity.find(with: username, gistId: gistId, in: context) else {
+            guard let gistEntity = GistEntity.find(with: username, gistId: gistToSave.gistId, in: context) else {
                     return
             }
 

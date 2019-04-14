@@ -50,7 +50,7 @@ open class GistEntity: _GistEntity {
     }
 
     func fill(from gist: Gist) {
-        id = gist.gistId!
+        id = gist.gistId
 
         nodeId = gist.nodeId
         gistsDescription = gist.gistsDescription
